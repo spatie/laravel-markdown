@@ -3,7 +3,6 @@
 namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Illuminate\Support\Facades\Blade;
 
 class MarkdownBladeComponentTest extends TestCase
 {
