@@ -14,7 +14,7 @@ class MarkdownRenderer
     public function __construct(
         protected bool $highlightCode,
         protected string $highlightTheme,
-        protected string|bool|null $cacheStoreName,
+        protected string | bool | null $cacheStoreName,
     ) {
         $this->highlightTheme ??= $this->options['code_highlighting.theme'] ?? 'github-light';
     }
