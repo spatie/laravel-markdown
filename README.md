@@ -1,3 +1,5 @@
+**PACKAGE IN DEVELOPMENT, DO NOT USE YET**
+
 # A fully featured Blade component to render markdown and highlight code snippets
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-markdown-blade-component.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-markdown-blade-component)
@@ -106,10 +108,7 @@ return [
 
 ## Usage
 
-```php
-$laravel-markdown-blade-component = new Spatie\MarkdownBladeComponent();
-echo $laravel-markdown-blade-component->echoPhrase('Hello, Spatie!');
-```
+TODO
 
 ## Testing
 
