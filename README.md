@@ -38,7 +38,7 @@ echo 'Hello world';
 
 Out of the box, the `x-markdown` component can:
 
-- highlight code blocks correctly (via [Shiki PHP](https://github.com/spatie/shiki-php))
+- highlight code blocks correctly (via [Shiki PHP](https://github.com/spatie/shiki-php)) for 100+ languages, including PHP, JS, Blade, [and many more](https://github.com/shikijs/shiki/blob/master/docs/languages.md).
 - add anchor links to headings
 - cache results to increase performance
 
