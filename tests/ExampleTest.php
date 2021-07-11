@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Spatie\LaravelMarkdownBladeComponent\Tests;
 
 class ExampleTest extends TestCase
 {
