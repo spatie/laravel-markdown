@@ -18,7 +18,6 @@ class MarkdownRenderer
         protected string | bool | null $cacheStoreName = null,
         protected bool $renderAnchors = true,
     ) {
-        $this->highlightTheme ??= $this->options['code_highlighting.theme'] ?? 'github-light';
     }
 
     public function convertToHtml(string $markdown): string
@@ -38,7 +37,11 @@ class MarkdownRenderer
 
     protected function getCacheKey(string $markdown): string
     {
-        $options = json_encode(['theme' => $this->highlightTheme]);
+        $options = json_encode([
+            'theme' => $this->highlightTheme,
+            'render_anchors' => $this->renderAnchors,
+            'commonmark_options' => $this->commonmarkOptions,
+        ]);
 
         return md5("markdown{$markdown}{$options}");
     }

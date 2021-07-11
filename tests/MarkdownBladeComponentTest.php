@@ -3,6 +3,8 @@
 namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Illuminate\Support\Facades\Cache;
+use Spatie\MarkdownBladeComponent\MarkdownRenderer;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownBladeComponentTest extends TestCase
@@ -74,5 +76,47 @@ class MarkdownBladeComponentTest extends TestCase
         );
 
         $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
+    public function it_can_cache_results()
+    {
+        $cacheKey = 'd1cd0dc15c848738f347cb539578252f';
+
+        $markdown = <<<BLADE
+            <x-markdown>
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+           BLADE;
+
+        $this->assertNull(cache()->get($cacheKey));
+
+        (string)$this->blade($markdown);
+
+        $this->assertNotNull(cache()->get($cacheKey));
+    }
+
+    /** @test */
+    public function caching_can_be_disabled()
+    {
+        config()->set('markdown-blade-component.cache_store', false);
+
+        $cacheKey = 'd1cd0dc15c848738f347cb539578252f';
+
+        $markdown = <<<BLADE
+            <x-markdown>
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+           BLADE;
+
+        $this->assertNull(cache()->get($cacheKey));
+
+        (string)$this->blade($markdown);
+
+        $this->assertNull(cache()->get($cacheKey));
     }
 }
