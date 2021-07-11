@@ -34,13 +34,11 @@ echo 'Hello world';
 </div>
 ```
 
-Out of the `x-markdown` component can:
+Out of the box, the `x-markdown` component can:
 
 - highlight code blocks correctly (via [Shiki PHP](https://github.com/spatie/shiki-php))
 - add anchor links to headings
 - cache results to increase performance
-
-
 
 ## Support us
 
@@ -58,22 +56,51 @@ You can install the package via composer:
 composer require spatie/laravel-markdown-blade-component
 ```
 
-You can publish and run the migrations with:
-
+Optionally, You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-config"
+php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-blade-component-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
 return [
+    'code_highlighting' => [
+        /*
+         * To highlight code, we'll use Shiki under the hood. Make sure it's installed.
+         *
+         * More info: TODO: add link
+         */
+        'enabled' => true,
+
+        /*
+         * The name of or path to a Shiki theme
+         *
+         * More info: TODO: add link
+         */
+        'theme' => 'github-light',
+    ],
+
+    /*
+     * When enabled, the markdown component will automatically add anchor
+     * links to all titles
+     */
+    'add_anchors_to_headings' => true,
+    
+    /*
+     * Rendering markdown to HTML can be resource intensive. By default
+     * the markdown component caches its results.
+     *
+     * You can specify the name of a cache store here. When set to `null`
+     * the default cache store will be used. If you do not want to use
+     * caching set this value to `false`.
+     */
+    'cache_store' => null,
+
+    /*
+     * This class will convert the markdown to HTML.
+     */
+    'renderer_class' => Spatie\MarkdownBladeComponent\MarkdownRenderer::class,
 ];
 ```
 
