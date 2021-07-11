@@ -15,8 +15,7 @@ class MarkdownRenderer
         protected bool $highlightCode = true,
         protected ?string $highlightTheme = null,
         protected array $options = []
-    )
-    {
+    ) {
         $this->highlightTheme ??= $this->options['default_theme'] ?? 'github-light';
     }
 
