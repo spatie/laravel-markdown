@@ -17,9 +17,9 @@ Here is a [link to our website](https://spatie.be)
 
 Some code
 
-\`\`\`php
+    ```php
 echo 'hello world';
-\`\`\`
+    ```
 </x-markdown>
 ```
 
