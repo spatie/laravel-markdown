@@ -3,10 +3,12 @@
 namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownBladeComponentTest extends TestCase
 {
     use InteractsWithViews;
+    use MatchesSnapshots;
 
     /** @test */
     public function it_can_render_markdown()
@@ -20,6 +22,6 @@ class MarkdownBladeComponentTest extends TestCase
             BLADE
         );
 
-        dd($renderedView);
+        $this->assertMatchesSnapshot($renderedView);
     }
 }
