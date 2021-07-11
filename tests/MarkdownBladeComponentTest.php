@@ -49,7 +49,43 @@ class MarkdownBladeComponentTest extends TestCase
     }
 
     /** @test */
+    public function the_default_theme_can_be_set_in_the_config_file()
+    {
+        config()->set('markdown-blade-component.code_highlighting.theme', 'github-dark');
+
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown>
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+            BLADE
+        );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
     public function it_can_disable_highlighting_code()
+    {
+        config()->set('markdown-blade-component.code_highlighting.enabled', false);
+
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown :highlight-code="false">
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+            BLADE
+        );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
+    public function the_highlighting_can_be_disabled_in_the_config_file()
     {
         $renderedView = (string)$this->blade(
             <<<BLADE
