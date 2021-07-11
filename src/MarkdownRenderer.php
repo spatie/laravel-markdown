@@ -15,7 +15,7 @@ class MarkdownRenderer
         protected array $commonmarkOptions = [],
         protected bool $highlightCode = true,
         protected string $highlightTheme = 'github-light',
-        protected string|bool|null $cacheStoreName = null,
+        protected string | bool | null $cacheStoreName = null,
         protected bool $renderAnchors = true,
     ) {
         $this->highlightTheme ??= $this->options['code_highlighting.theme'] ?? 'github-light';
@@ -52,7 +52,6 @@ class MarkdownRenderer
             ->addRenderers($environment);
 
         $commonMarkConverter = new CommonMarkConverter(
-
             environment: $environment
         );
 
