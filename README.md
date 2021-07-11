@@ -19,7 +19,7 @@ Some code
 
 ```php
 echo 'hello world';
-```
+(`)``
 </x-markdown>
 ```
 
