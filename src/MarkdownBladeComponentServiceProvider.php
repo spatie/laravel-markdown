@@ -4,7 +4,6 @@ namespace Spatie\MarkdownBladeComponent;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\MarkdownBladeComponent\Commands\LaravelMarkdownBladeComponentCommand;
 
 class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
 {
