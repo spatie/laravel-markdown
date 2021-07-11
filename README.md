@@ -133,6 +133,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
+## Alternatives
+
+If you don't want to install and handle Shiki yourself, take a look at [Torchlight](https://torchlight.dev), which can highlight your code with minimal setup.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
