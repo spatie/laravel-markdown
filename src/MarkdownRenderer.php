@@ -9,7 +9,7 @@ use League\CommonMark\Environment;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\MarkdownBladeComponent\Renderers\HeadingRenderer;
 
-class Markdown
+class MarkdownRenderer
 {
     public function __construct(
         protected bool $highlightCode = true,

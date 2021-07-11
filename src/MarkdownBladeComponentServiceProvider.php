@@ -4,7 +4,6 @@ namespace Spatie\MarkdownBladeComponent;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\MarkdownBladeComponent\Commands\LaravelMarkdownBladeComponentCommand;
 
 class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
 {
@@ -13,6 +12,7 @@ class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-markdown-blade-component')
             ->hasConfigFile()
-            ->hasViews();
+            ->hasViews()
+            ->hasViewComponent('markdown', MarkdownBladeComponent::class);
     }
 }
