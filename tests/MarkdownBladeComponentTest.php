@@ -1,8 +1,8 @@
 <?php
 
-namespace Spatie\LaravelMarkdownBladeComponent\Tests;
+namespace Spatie\MarkdownBladeComponent\Tests;
 
-class ExampleTest extends TestCase
+class MarkdownBladeComponentTest extends TestCase
 {
     /** @test */
     public function true_is_true()

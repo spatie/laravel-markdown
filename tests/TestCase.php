@@ -1,36 +1,17 @@
 <?php
 
-namespace Spatie\LaravelMarkdownBladeComponent\Tests;
+namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\LaravelMarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider;
+use Spatie\MarkdownBladeComponent\MarkdownBladeComponentServiceProvider;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\LaravelMarkdownBladeComponent\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
-            LaravelMarkdownBladeComponentServiceProvider::class,
+            MarkdownBladeComponentServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        include_once __DIR__.'/../database/migrations/create_laravel-markdown-blade-component_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
     }
 }

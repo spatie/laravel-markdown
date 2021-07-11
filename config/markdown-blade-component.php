@@ -1,5 +1,7 @@
 <?php
-// config for Spatie/ClassName
-return [
 
+return [
+    'cache_store' => 'default',
+
+    'default_theme' => 'github-light',
 ];

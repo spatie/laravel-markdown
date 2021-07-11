@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\LaravelMarkdownBladeComponent;
+namespace Spatie\MarkdownBladeComponent;
 
 class LaravelMarkdownBladeComponent
 {

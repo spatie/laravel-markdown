@@ -17,8 +17,9 @@
     ],
     "require": {
         "php": "^8.0",
-        "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^8.37"
+        "illuminate/contracts": "^8.37",
+        "spatie/commonmark-shiki-highlighter": "^1.1",
+        "spatie/laravel-package-tools": "^1.4.3"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",
@@ -30,17 +31,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\LaravelMarkdownBladeComponent\\": "src",
-            "Spatie\\LaravelMarkdownBladeComponent\\Database\\Factories\\": "database/factories"
+            "Spatie\\MarkdownBladeComponent\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\LaravelMarkdownBladeComponent\\Tests\\": "tests"
+            "Spatie\\MarkdownBladeComponent\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
         "test": "./vendor/bin/testbench package:test --parallel --no-coverage",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
@@ -50,11 +49,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\LaravelMarkdownBladeComponent\\LaravelMarkdownBladeComponentServiceProvider"
-            ],
-            "aliases": {
-                "LaravelMarkdownBladeComponent": "Spatie\\LaravelMarkdownBladeComponent\\LaravelMarkdownBladeComponentFacade"
-            }
+                "Spatie\\MarkdownBladeComponent\\MarkdownBladeComponentServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

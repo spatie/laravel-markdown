@@ -36,13 +36,13 @@ composer require spatie/laravel-markdown-blade-component
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\LaravelMarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-migrations"
+php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\LaravelMarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-config"
+php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="laravel-markdown-blade-component-config"
 ```
 
 This is the contents of the published config file:
@@ -55,7 +55,7 @@ return [
 ## Usage
 
 ```php
-$laravel-markdown-blade-component = new Spatie\LaravelMarkdownBladeComponent();
+$laravel-markdown-blade-component = new Spatie\MarkdownBladeComponent();
 echo $laravel-markdown-blade-component->echoPhrase('Hello, Spatie!');
 ```
 

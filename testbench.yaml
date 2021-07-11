@@ -1,2 +1,2 @@
 providers:
-  - Spatie\LaravelMarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider
+  - Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider
