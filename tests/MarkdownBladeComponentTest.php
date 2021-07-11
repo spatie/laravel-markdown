@@ -29,4 +29,50 @@ class MarkdownBladeComponentTest extends TestCase
 
         $this->assertMatchesSnapshot($renderedView);
     }
+
+    /** @test */
+    public function it_can_use_a_custom_theme()
+    {
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown theme="github-dark">
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+            BLADE
+        );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
+    public function it_can_disable_highlighting_code()
+    {
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown :highlight-code="false">
+            ```php
+            echo 'Hello world';
+            ```
+            </x-markdown>
+            BLADE
+        );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
+    public function it_can_disable_rendering_anchors()
+    {
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown :anchors="false">
+            # Title
+            </x-markdown>
+            BLADE
+        );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
 }

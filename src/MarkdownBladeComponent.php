@@ -11,6 +11,7 @@ class MarkdownBladeComponent extends Component
         protected array $options = [],
         protected ?bool $highlightCode = null,
         protected ?string $theme = null,
+        protected ?bool $anchors = null,
     ) {
     }
 
@@ -23,7 +24,7 @@ class MarkdownBladeComponent extends Component
             highlightCode: $this->highlightCode ?? $config['code_highlighting']['enabled'],
             highlightTheme: $this->theme ?? $config['code_highlighting']['theme'],
             cacheStoreName: $config['cache_store'],
-            renderAnchors: $config['add_anchors_to_headings'],
+            renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
         );
 
         return $markdownRenderer->convertToHtml($markdown);
