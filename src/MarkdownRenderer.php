@@ -7,14 +7,16 @@ use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\ConfigurableEnvironmentInterface;
 use League\CommonMark\Environment;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
-use Spatie\MarkdownBladeComponent\Renderers\HeadingRenderer;
+use Spatie\MarkdownBladeComponent\Renderers\AnchorHeadingRenderer;
 
 class MarkdownRenderer
 {
     public function __construct(
-        protected bool $highlightCode,
-        protected string $highlightTheme,
-        protected string|bool|null $cacheStoreName,
+        protected array $commonmarkOptions = [],
+        protected bool $highlightCode = true,
+        protected string $highlightTheme = 'github-light',
+        protected string|bool|null $cacheStoreName = null,
+        protected bool $renderAnchors = true,
     ) {
         $this->highlightTheme ??= $this->options['code_highlighting.theme'] ?? 'github-light';
     }
@@ -46,25 +48,30 @@ class MarkdownRenderer
         $environment = Environment::createCommonMarkEnvironment();
 
         $this
-            ->addRenderers($environment)
-            ->addExtensions($environment);
+            ->addExtensions($environment)
+            ->addRenderers($environment);
 
-        $commonMarkConverter = new CommonMarkConverter(environment: $environment);
+        $commonMarkConverter = new CommonMarkConverter(
+
+            environment: $environment
+        );
 
         return $commonMarkConverter->convertToHtml($markdown);
-    }
-
-    protected function addRenderers(ConfigurableEnvironmentInterface $environment): self
-    {
-        $environment->addBlockRenderer(Heading::class, new HeadingRenderer());
-
-        return $this;
     }
 
     protected function addExtensions(ConfigurableEnvironmentInterface $environment): self
     {
         if ($this->highlightCode) {
             $environment->addExtension(new HighlightCodeExtension($this->highlightTheme));
+        }
+
+        return $this;
+    }
+
+    protected function addRenderers(ConfigurableEnvironmentInterface $environment): self
+    {
+        if ($this->renderAnchors) {
+            $environment->addBlockRenderer(Heading::class, new AnchorHeadingRenderer());
         }
 
         return $this;

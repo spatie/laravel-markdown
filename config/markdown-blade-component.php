@@ -27,5 +27,14 @@ return [
         'theme' => 'github-light',
     ],
 
+    /*
+     * When enabled, the markdown component will automatically add anchor
+     * links to all titles
+     */
+    'add_anchors_to_headings' => true,
 
+    /*
+     * This class will convert the markdown to HTML.
+     */
+    'renderer_class' => Spatie\MarkdownBladeComponent\MarkdownRenderer::class,
 ];
