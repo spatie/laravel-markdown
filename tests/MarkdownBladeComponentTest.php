@@ -4,7 +4,6 @@ namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Support\Facades\Cache;
-use Spatie\MarkdownBladeComponent\MarkdownRenderer;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownBladeComponentTest extends TestCase
