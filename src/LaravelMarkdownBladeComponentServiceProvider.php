@@ -2,9 +2,9 @@
 
 namespace Spatie\LaravelMarkdownBladeComponent;
 
+use Spatie\LaravelMarkdownBladeComponent\Commands\LaravelMarkdownBladeComponentCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Spatie\LaravelMarkdownBladeComponent\Commands\LaravelMarkdownBladeComponentCommand;
 
 class LaravelMarkdownBladeComponentServiceProvider extends PackageServiceProvider
 {
