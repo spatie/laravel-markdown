@@ -3,7 +3,6 @@
 namespace Spatie\MarkdownBladeComponent\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
-use Illuminate\Support\Facades\Cache;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownBladeComponentTest extends TestCase
@@ -153,5 +152,19 @@ class MarkdownBladeComponentTest extends TestCase
         (string)$this->blade($markdown);
 
         $this->assertNull(cache()->get($cacheKey));
+    }
+
+    /** @test */
+    public function attributes_will_be_added_to_the_wrapper_div()
+    {
+        $markdown = <<<BLADE
+            <x-markdown extraAttribute="extraValue">
+            # Title
+            </x-markdown>
+           BLADE;
+
+        $renderedView = (string)$this->blade($markdown);
+
+        $this->assertMatchesSnapshot($renderedView);
     }
 }
