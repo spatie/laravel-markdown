@@ -9,8 +9,7 @@ class MarkdownBladeComponent extends Component
     public function __construct(
         protected ?bool $highlightCode = null,
         protected ?string $theme = null,
-    )
-    {
+    ) {
     }
 
     public function convertToHtml(string $markdown): string
