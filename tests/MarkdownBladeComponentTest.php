@@ -16,8 +16,13 @@ class MarkdownBladeComponentTest extends TestCase
         $renderedView = (string)$this->blade(
             <<<BLADE
             <x-markdown>
-            # Title
-            [My link](https://example.com)
+            # My title
+
+            This is a [link to our website](https://spatie.be)
+
+            ```php
+            echo 'Hello world';
+            ```
             </x-markdown>
             BLADE
         );
