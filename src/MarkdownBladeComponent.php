@@ -2,6 +2,6 @@
 
 namespace Spatie\MarkdownBladeComponent;
 
-class LaravelMarkdownBladeComponent
+class MarkdownBladeComponent
 {
 }
