@@ -17,10 +17,6 @@ class HeadingRenderer implements BlockRendererInterface
         $id = Str::slug($element->getContents());
 
         $element->setAttribute('id', $id);
-        $element->setContents(
-            $element->getContents() . ' ' .
-            new HtmlElement('a', ['href' => "#{$id}", 'class' => 'permalink'], '#')
-        );
 
         return $element;
     }

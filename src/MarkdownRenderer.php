@@ -12,19 +12,23 @@ use Spatie\MarkdownBladeComponent\Renderers\HeadingRenderer;
 class MarkdownRenderer
 {
     public function __construct(
-        protected bool $highlightCode = true,
-        protected ?string $highlightTheme = null,
-        protected array $options = []
+        protected bool $highlightCode,
+        protected string $highlightTheme,
+        protected string|bool|null $cacheStoreName,
     ) {
-        $this->highlightTheme ??= $this->options['default_theme'] ?? 'github-light';
+        $this->highlightTheme ??= $this->options['code_highlighting.theme'] ?? 'github-light';
     }
 
     public function convertToHtml(string $markdown): string
     {
+        if ($this->cacheStoreName === false) {
+            return $this->convertMarkdownToHtml($markdown);
+        }
+
         $cacheKey = $this->getCacheKey($markdown);
 
         return cache()
-            ->store($this->options['cache_store'])
+            ->store($this->cacheStoreName)
             ->rememberForever($cacheKey, function () use ($markdown) {
                 return $this->convertMarkdownToHtml($markdown);
             });

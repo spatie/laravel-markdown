@@ -2,11 +2,25 @@
 
 namespace Spatie\MarkdownBladeComponent\Tests;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Illuminate\Support\Facades\Blade;
+
 class MarkdownBladeComponentTest extends TestCase
 {
+    use InteractsWithViews;
+
     /** @test */
-    public function true_is_true()
+    public function it_can_render_markdown()
     {
-        $this->assertTrue(true);
+        $renderedView = (string)$this->blade(
+            <<<BLADE
+            <x-markdown>
+            # Title
+            [My link](https://example.com)
+            </x-markdown>
+            BLADE
+        );
+
+        dd($renderedView);
     }
 }
