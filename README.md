@@ -68,6 +68,8 @@ npm install shiki
 yarn add shiki
 ```
 
+Make sure you have installed Node 10 or higher.
+
 Optionally, You can publish the config file with:
 ```bash
 php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-blade-component-config"
@@ -193,6 +195,19 @@ echo 'Hello world';
 ```
 </x-markdown>
 ````
+
+## Marking lines as highlighted, added, deleted and focus
+
+Certain options can be used when rendering code block. 
+
+```md
+```php{1,2}{3}
+<?php
+echo "We're highlighting line 1 and 2";
+echo "And focusing line 3";
+```
+
+To know more about the feature, head over [the docs of the underlying spatie/commonmark-shiki-highlighter package](https://github.com/spatie/commonmark-shiki-highlighter#marking-lines-as-highlighted-added-deleted-and-focus).
 
 ### Rendering anchors
 
