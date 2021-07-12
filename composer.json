@@ -53,7 +53,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\MarkdownBladeComponent\\MarkdownBladeComponentServiceProvider"
+                "Spatie\\LaravelMarkdown\\MarkdownServiceProvider"
             ]
         }
     },
