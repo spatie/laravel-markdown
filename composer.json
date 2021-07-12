@@ -1,12 +1,12 @@
 {
-    "name": "spatie/laravel-markdown-blade-component",
-    "description": "A fully featured Blade component to render markdown and highlight code snippets",
+    "name": "spatie/laravel-markdown",
+    "description": "A highly configurable markdown renderer and Blade component for Laravel",
     "keywords": [
         "spatie",
         "laravel",
         "laravel-markdown-blade-component"
     ],
-    "homepage": "https://github.com/spatie/laravel-markdown-blade-component",
+    "homepage": "https://github.com/spatie/laravel-markdown",
     "license": "MIT",
     "authors": [
         {
