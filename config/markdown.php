@@ -18,8 +18,7 @@ return [
     ],
 
     /*
-     * When enabled, the markdown component will automatically add anchor
-     * links to all titles
+     * When enabled, anchor links will be added to all titles
      */
     'add_anchors_to_headings' => true,
 
@@ -33,7 +32,7 @@ return [
 
     /*
      * Rendering markdown to HTML can be resource intensive. By default
-     * the markdown component caches its results.
+     * we'll cache the results.
      *
      * You can specify the name of a cache store here. When set to `null`
      * the default cache store will be used. If you do not want to use
@@ -42,7 +41,7 @@ return [
     'cache_store' => null,
 
     /*
-     * This class will convert the markdown to HTML.
+     * This class will convert markdown to HTML
      *
      * You can change this to a class of your own to greatly
      * customize the rendering process
