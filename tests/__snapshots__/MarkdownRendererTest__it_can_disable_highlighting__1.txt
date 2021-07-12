@@ -1,0 +1,4 @@
+<h1 id="my-title">My title</h1>
+<p>This is a <a href="https://spatie.be">link to our website</a></p>
+<pre><code class="language-php">echo 'Hello world';
+</code></pre>

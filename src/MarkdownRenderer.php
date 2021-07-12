@@ -73,7 +73,7 @@ class MarkdownRenderer
         return $this;
     }
 
-    public function addExtension(ExtensionInterface $extension)
+    public function addExtension(ExtensionInterface $extension): self
     {
         $this->extensions[] = $extension;
 
@@ -87,7 +87,7 @@ class MarkdownRenderer
         return $this;
     }
 
-    public function convertToHtml(string $markdown): string
+    public function toHtml(string $markdown): string
     {
         if ($this->cacheStoreName === false) {
             return $this->convertMarkdownToHtml($markdown);

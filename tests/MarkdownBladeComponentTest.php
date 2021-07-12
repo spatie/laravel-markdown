@@ -11,7 +11,7 @@ class MarkdownBladeComponentTest extends TestCase
     use MatchesSnapshots;
 
     /** @test */
-    public function it_can_render_markdown()
+    public function the_component_can_render_markdown()
     {
         $renderedView = (string)$this->blade(
             <<<BLADE
@@ -31,7 +31,7 @@ class MarkdownBladeComponentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_use_a_custom_theme()
+    public function the_component_can_use_a_custom_theme()
     {
         $renderedView = (string)$this->blade(
             <<<BLADE
@@ -65,7 +65,7 @@ class MarkdownBladeComponentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_disable_highlighting_code()
+    public function the_component_can_disable_highlighting_code()
     {
         config()->set('markdown.code_highlighting.enabled', false);
 
@@ -99,7 +99,7 @@ class MarkdownBladeComponentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_disable_rendering_anchors()
+    public function the_component_can_disable_rendering_anchors()
     {
         $renderedView = (string)$this->blade(
             <<<BLADE
@@ -113,7 +113,7 @@ class MarkdownBladeComponentTest extends TestCase
     }
 
     /** @test */
-    public function it_can_cache_results()
+    public function the_component_can_cache_results()
     {
         $cacheKey = 'd1cd0dc15c848738f347cb539578252f';
 

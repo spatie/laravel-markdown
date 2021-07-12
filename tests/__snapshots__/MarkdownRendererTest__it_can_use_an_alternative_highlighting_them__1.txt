@@ -1,0 +1,4 @@
+<h1 id="my-title">My title</h1>
+<p>This is a <a href="https://spatie.be">link to our website</a></p>
+<pre class="shiki" style="background-color: #24292e"><code><span class="line"><span style="color: #79B8FF">echo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">&#39;Hello world&#39;</span><span style="color: #E1E4E8">;</span></span>
+<span class="line"></span></code></pre>
