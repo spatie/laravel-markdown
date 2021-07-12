@@ -58,6 +58,18 @@ You can install the package via composer:
 composer require spatie/laravel-markdown-blade-component
 ```
 
+To enable the code highlighting feature, you'll need to install the JavaScript package [`shiki`](https://github.com/shikijs/shiki) in your project. You can install it via npm...
+
+```bash
+npm install shiki
+```
+
+... or Yarn.
+
+```bash
+yarn add shiki
+```
+
 Optionally, You can publish the config file with:
 ```bash
 php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-blade-component-config"
@@ -108,7 +120,90 @@ return [
 
 ## Usage
 
+Use the `x-markdown` Blade component to render markdown to HTML.
+
+This chunk of markdown...
+
+```blade
+<x-markdown>
+# My title
+
+This is a [link to our website](https://spatie.be)
+
+```php
+echo 'Hello world';
+    ```
+</x-markdown>
+```
+
+... will be converted to this chunk of HTML:
+
+```html
+<div>
+    <h1 id="my-title">My title</h1>
+    <p>This is a <a href="https://spatie.be">link to our website</a></p>
+    <pre class="shiki" style="background-color: #fff"><code><span class="line"><span
+        style="color: #005CC5">echo</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;Hello world&#39;</span><span
+        style="color: #24292E">;</span></span>
+<span class="line"></span></code></pre>
+</div>
+```
+
+### Specifying the theme used for code highlighting
+
+In the `code_highlighting.theme` value op the `markdown-blade-component` config file you can specify the default theme to be used. This value can be [one of the themes]((https://github.com/shikijs/shiki/blob/master/docs/themes.md)) that Shiki supports out of the box.
+
+Shiki also [supports](https://github.com/shikijs/shiki/blob/master/docs/themes.md) any [VSCode themes](https://code.visualstudio.com/docs/getstarted/themes).
+
+You can use a custom theme using the absolute path to a theme in as the value for `code_highlighting.theme`.
+
+If you want to change the theme for a particular instance of `x-markdown`, pass a theme to the `theme` attribute.
+
+```html
+ <x-markdown theme="github-dark">
+```php
+echo 'Hello world';
+     ```
+</x-markdown>
+```
+
+### Disabling code highlighting
+
+Code highlighting can be disabled globally, by setting the `code_highlighting.enabled` key in the `markdown-blade-component`  config file to `false`.
+
+If you don't want to use code highlighting for a particular instance of `x-markdown`, pass `false` to the `code-highlighting` attribute.
+
+```html
+ <x-markdown :highlight-code="false">
+```php
+echo 'Hello world';
+    ```
+</x-markdown>
+```
+
+### Rendering anchors
+
+By default, the component will add anchors to all headings in the rendered HTML. To disable this behaviour, you can set the `add_anchors_to_headings` config value in the the `markdown-blade-component`  config file to `false`.
+
+If you don't want to render anchors for a particular instance of `x-markdown`, pass `false` to the `anchors` attribute.
+
+```html
+ <x-markdown :anchros="false">
+# My title
+</x-markdown>
+```
+
+### Adding custom attributes
+
 TODO
+
+### Caching results
+
+Code highlighting is a resource intensive process. That's why the component ships with caching out of the box. By default, the component uses the default cache store. 
+
+To configure the store to use, or to disable caching, change the value of the `cache_store` param in the `markdown-blade-component` config file.
+
+
 
 ## Testing
 
