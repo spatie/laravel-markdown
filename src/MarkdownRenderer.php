@@ -45,7 +45,7 @@ class MarkdownRenderer
         return $this;
     }
 
-    public function cacheStoreName(string|bool|null $cacheStoreName): self
+    public function cacheStoreName(string | bool | null $cacheStoreName): self
     {
         $this->cacheStoreName = $cacheStoreName;
 
@@ -72,7 +72,6 @@ class MarkdownRenderer
 
         return $this;
     }
-
 
     public function convertToHtml(string $markdown): string
     {
@@ -123,11 +122,11 @@ class MarkdownRenderer
             $environment->addBlockRenderer(Heading::class, new AnchorHeadingRenderer());
         }
 
-        foreach($this->extensions as $extension) {
+        foreach ($this->extensions as $extension) {
             $environment->addExtension($extension);
         }
 
-        foreach($this->blockRenderers as $blockRenderer) {
+        foreach ($this->blockRenderers as $blockRenderer) {
             $environment->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
         }
     }

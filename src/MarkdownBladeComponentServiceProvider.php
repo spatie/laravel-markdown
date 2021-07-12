@@ -17,11 +17,11 @@ class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
 
         Blade::component('markdown', MarkdownBladeComponent::class);
 
-        $this->app->bind(MarkdownRenderer::class, function() {
+        $this->app->bind(MarkdownRenderer::class, function () {
             $config = config('markdown-blade-component');
 
             /** @var \Spatie\LaravelMarkdown\MarkdownRenderer $renderer */
-            $renderer  = new $config['renderer_class'](
+            $renderer = new $config['renderer_class'](
                 commonmarkOptions: $config['commonmark_options'],
                 highlightCode: $config['code_highlighting']['enabled'],
                 highlightTheme: $config['code_highlighting']['theme'],
@@ -30,7 +30,7 @@ class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
                 extensions: $config['extensions']
             );
 
-            foreach($config['block_renderers'] as $blockRenderer) {
+            foreach ($config['block_renderers'] as $blockRenderer) {
                 $renderer->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
             }
 
