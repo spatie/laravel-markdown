@@ -92,12 +92,22 @@ return [
     ],
 
     /*
-     * These renderers should be added to the markdown environment. An valid
+     * These block renderers should be added to the markdown environment. An valid
      * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
      *
      * More info: https://commonmark.thephpleague.com/1.6/customization/block-rendering/
      */
     'block_renderers' => [
+        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+    ],
+
+    /*
+     * These inline renderers should be added to the markdown environment. An valid
+     * renderer implements League\CommonMark\Block\Renderer\InlineRendererInterface;
+ *
+ * More info: https://commonmark.thephpleague.com/1.6/customization/inline-rendering/
+ */
+    'inline_renderers' => [
         // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
     ],
 ];

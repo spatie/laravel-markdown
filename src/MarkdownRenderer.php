@@ -8,6 +8,7 @@ use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\ConfigurableEnvironmentInterface;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
 
@@ -21,6 +22,7 @@ class MarkdownRenderer
         protected bool $renderAnchors = true,
         protected array $extensions = [],
         protected array $blockRenderers = [],
+        protected array $inlineRenders = [],
     ) {
     }
 
@@ -87,6 +89,13 @@ class MarkdownRenderer
         return $this;
     }
 
+    public function addInlineRenderer(string $inlineClass, InlineRendererInterface $inlineRenderer): self
+    {
+        $this->inlineRenders[] = ['class' => $inlineClass, 'renderer' => $inlineRenderer];
+
+        return $this;
+    }
+
     public function toHtml(string $markdown): string
     {
         if ($this->cacheStoreName === false) {
@@ -142,6 +151,10 @@ class MarkdownRenderer
 
         foreach ($this->blockRenderers as $blockRenderer) {
             $environment->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
+        }
+
+        foreach ($this->inlineRenders as $inlineRenderer) {
+            $environment->addInlineRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
     }
 }
