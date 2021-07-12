@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class MarkdownBladeComponent extends Component
 {
     public function __construct(
-        protected array $options = [],
+        protected ?array $options = [],
         protected ?bool $highlightCode = null,
         protected ?string $theme = null,
         protected ?bool $anchors = null,
@@ -20,7 +20,7 @@ class MarkdownBladeComponent extends Component
         $config = config('markdown-blade-component');
 
         $markdownRenderer = new $config['renderer_class'](
-            commonmarkOptions: $this->options,
+            commonmarkOptions: array_merge($config['commonmark_options'], $this->options),
             highlightCode: $this->highlightCode ?? $config['code_highlighting']['enabled'],
             highlightTheme: $this->theme ?? $config['code_highlighting']['theme'],
             cacheStoreName: $config['cache_store'],

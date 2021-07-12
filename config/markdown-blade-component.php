@@ -27,7 +27,7 @@ return [
      * These options will be passed to the league/commonmark package which is
      * used under the hood to render markdown.
      *
-     * More info:
+     * More info: https://github.com/spatie/laravel-markdown-blade-component#passing-options-to-commonmark
      */
     'commonmark_options' => [],
 

@@ -1,5 +1,3 @@
-**PACKAGE IN DEVELOPMENT, DO NOT USE YET**
-
 # A fully featured Blade component to render markdown and highlight code snippets
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-markdown-blade-component.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-markdown-blade-component)
@@ -78,19 +76,21 @@ php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMark
 This is the contents of the published config file:
 
 ```php
+<?php
+
 return [
     'code_highlighting' => [
         /*
          * To highlight code, we'll use Shiki under the hood. Make sure it's installed.
          *
-         * More info: TODO: add link
+         * More info: https://github.com/spatie/laravel-markdown-blade-component#installation
          */
         'enabled' => true,
 
         /*
          * The name of or path to a Shiki theme
          *
-         * More info: TODO: add link
+         * More info: https://github.com/spatie/laravel-markdown-blade-component#specifying-the-theme-used-for-code-highlighting
          */
         'theme' => 'github-light',
     ],
@@ -100,7 +100,15 @@ return [
      * links to all titles
      */
     'add_anchors_to_headings' => true,
-    
+
+    /*
+     * These options will be passed to the league/commonmark package which is
+     * used under the hood to render markdown.
+     *
+     * More info: https://github.com/spatie/laravel-markdown-blade-component#passing-options-to-commonmark
+     */
+    'commonmark_options' => [],
+
     /*
      * Rendering markdown to HTML can be resource intensive. By default
      * the markdown component caches its results.
@@ -113,6 +121,11 @@ return [
 
     /*
      * This class will convert the markdown to HTML.
+     *
+     * You can change this to a class of your own to greatly
+     * customize the rendering process
+     *
+     * More info: https://github.com/spatie/laravel-markdown-blade-component#customizing-the-rendering-process
      */
     'renderer_class' => Spatie\MarkdownBladeComponent\MarkdownRenderer::class,
 ];
@@ -188,7 +201,7 @@ By default, the component will add anchors to all headings in the rendered HTML.
 If you don't want to render anchors for a particular instance of `x-markdown`, pass `false` to the `anchors` attribute.
 
 ```html
- <x-markdown :anchros="false">
+ <x-markdown :anchors="false">
 # My title
 </x-markdown>
 ```
@@ -221,7 +234,15 @@ To configure the store to use, or to disable caching, change the value of the `c
 
 ### Passing options to Commonmark
 
-Under the hood, the `league/commonmark` 
+Under the hood, the `league/commonmark` package is used to render markdown. In the `commonmark_options` key of the `markdown-blade-component` config file, you can pass any of the options mentioned in [the league/commonmark docs](https://commonmark.thephpleague.com/1.6/configuration/).
+
+If you want to pass options to be used by a particular instance of `x-markdown`, you can pass options to the `options` attribute.
+
+```html
+ <x-markdown :options="['enable_strong' => false]">
+# My title
+</x-markdown>
+```
 
 ### Customizing the rendering process
 
