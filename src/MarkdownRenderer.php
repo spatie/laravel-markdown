@@ -38,6 +38,13 @@ class MarkdownRenderer
         return $this;
     }
 
+    public function disableHighlighting(): self
+    {
+        $this->highlightCode = false;
+
+        return $this;
+    }
+
     public function highlightTheme(string $highlightTheme): self
     {
         $this->highlightTheme = $highlightTheme;
@@ -55,6 +62,13 @@ class MarkdownRenderer
     public function renderAnchors(bool $renderAnchors): self
     {
         $this->renderAnchors = $renderAnchors;
+
+        return $this;
+    }
+
+    public function disableAnchors(): self
+    {
+        $this->renderAnchors = false;
 
         return $this;
     }
