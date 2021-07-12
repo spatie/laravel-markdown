@@ -17,7 +17,7 @@ class MarkdownBladeComponent extends Component
 
     public function convertToHtml(string $markdown): string
     {
-        $config = config('markdown-blade-component');
+        $config = config('markdown');
 
         $markdownRenderer = new $config['renderer_class'](
             commonmarkOptions: array_merge($config['commonmark_options'], $this->options),
@@ -32,6 +32,6 @@ class MarkdownBladeComponent extends Component
 
     public function render(): View
     {
-        return view('markdown-blade-component::markdown');
+        return view('markdown::markdown');
     }
 }

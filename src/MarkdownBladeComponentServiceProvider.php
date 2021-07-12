@@ -11,14 +11,14 @@ class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-markdown-blade-component')
+            ->name('laravel-markdown')
             ->hasConfigFile()
             ->hasViews();
 
         Blade::component('markdown', MarkdownBladeComponent::class);
 
         $this->app->bind(MarkdownRenderer::class, function () {
-            $config = config('markdown-blade-component');
+            $config = config('markdown');
 
             /** @var \Spatie\LaravelMarkdown\MarkdownRenderer $renderer */
             $renderer = new $config['renderer_class'](

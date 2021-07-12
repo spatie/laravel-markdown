@@ -5,14 +5,14 @@ return [
         /*
          * To highlight code, we'll use Shiki under the hood. Make sure it's installed.
          *
-         * More info: https://github.com/spatie/laravel-markdown-blade-component#installation
+         * More info: https://github.com/spatie/laravel-markdown#installation
          */
         'enabled' => true,
 
         /*
          * The name of or path to a Shiki theme
          *
-         * More info: https://github.com/spatie/laravel-markdown-blade-component#specifying-the-theme-used-for-code-highlighting
+         * More info: https://github.com/spatie/laravel-markdown#specifying-the-theme-used-for-code-highlighting
          */
         'theme' => 'github-light',
     ],
@@ -27,7 +27,7 @@ return [
      * These options will be passed to the league/commonmark package which is
      * used under the hood to render markdown.
      *
-     * More info: https://github.com/spatie/laravel-markdown-blade-component#passing-options-to-commonmark
+     * More info: https://github.com/spatie/laravel-markdown#passing-options-to-commonmark
      */
     'commonmark_options' => [],
 
@@ -47,7 +47,7 @@ return [
      * You can change this to a class of your own to greatly
      * customize the rendering process
      *
-     * More info: https://github.com/spatie/laravel-markdown-blade-component#customizing-the-rendering-process
+     * More info: https://github.com/spatie/laravel-markdown#customizing-the-rendering-process
      */
     'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
 

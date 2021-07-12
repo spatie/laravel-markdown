@@ -49,7 +49,7 @@ class MarkdownBladeComponentTest extends TestCase
     /** @test */
     public function the_default_theme_can_be_set_in_the_config_file()
     {
-        config()->set('markdown-blade-component.code_highlighting.theme', 'github-dark');
+        config()->set('markdown.code_highlighting.theme', 'github-dark');
 
         $renderedView = (string)$this->blade(
             <<<BLADE
@@ -67,7 +67,7 @@ class MarkdownBladeComponentTest extends TestCase
     /** @test */
     public function it_can_disable_highlighting_code()
     {
-        config()->set('markdown-blade-component.code_highlighting.enabled', false);
+        config()->set('markdown.code_highlighting.enabled', false);
 
         $renderedView = (string)$this->blade(
             <<<BLADE
@@ -135,7 +135,7 @@ class MarkdownBladeComponentTest extends TestCase
     /** @test */
     public function caching_can_be_disabled()
     {
-        config()->set('markdown-blade-component.cache_store', false);
+        config()->set('markdown.cache_store', false);
 
         $cacheKey = 'd1cd0dc15c848738f347cb539578252f';
 
