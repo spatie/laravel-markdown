@@ -24,6 +24,14 @@ return [
     'add_anchors_to_headings' => true,
 
     /*
+     * These options will be passed to the league/commonmark package which is
+     * used under the hood to render markdown.
+     *
+     * More info:
+     */
+    'commonmark_options' => [],
+
+    /*
      * Rendering markdown to HTML can be resource intensive. By default
      * the markdown component caches its results.
      *

@@ -219,6 +219,10 @@ Code highlighting is a resource intensive process. That's why the component ship
 
 To configure the store to use, or to disable caching, change the value of the `cache_store` param in the `markdown-blade-component` config file.
 
+### Passing options to Commonmark
+
+Under the hood, the `league/commonmark` 
+
 ### Customizing the rendering process
 
 The markdown given to the `x-markdown` component will be converted by the class specified in the `renderer_class` value of the `markdown-blade-component` config file.
