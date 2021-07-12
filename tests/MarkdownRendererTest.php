@@ -12,7 +12,7 @@ class MarkdownRendererTest extends TestCase
     /** @test */
     public function it_can_render_markdown()
     {
-        $markdown =  <<<MD
+        $markdown = <<<MD
             # My title
 
             This is a [link to our website](https://spatie.be)
@@ -30,7 +30,7 @@ class MarkdownRendererTest extends TestCase
     /** @test */
     public function it_can_disable_highlighting()
     {
-        $markdown =  <<<MD
+        $markdown = <<<MD
             # My title
 
             This is a [link to our website](https://spatie.be)
@@ -51,7 +51,7 @@ class MarkdownRendererTest extends TestCase
     /** @test */
     public function it_can_use_an_alternative_highlighting_them()
     {
-        $markdown =  <<<MD
+        $markdown = <<<MD
             # My title
 
             This is a [link to our website](https://spatie.be)
@@ -72,7 +72,7 @@ class MarkdownRendererTest extends TestCase
     /** @test */
     public function it_can_disable_rendering_anchors()
     {
-        $markdown =  <<<MD
+        $markdown = <<<MD
             # My title
             MD;
 
