@@ -175,7 +175,7 @@ You can use a custom theme using the absolute path to a theme in as the value fo
 If you want to change the theme for a particular instance of `x-markdown`, pass a theme to the `theme` attribute.
 
 ````html
- <x-markdown theme="github-dark">
+<x-markdown theme="github-dark">
 ```php
 echo 'Hello world';
 ```
@@ -189,7 +189,7 @@ Code highlighting can be disabled globally, by setting the `code_highlighting.en
 If you don't want to use code highlighting for a particular instance of `x-markdown`, pass `false` to the `code-highlighting` attribute.
 
 ````html
- <x-markdown :highlight-code="false">
+<x-markdown :highlight-code="false">
 ```php
 echo 'Hello world';
 ```
@@ -216,7 +216,7 @@ By default, the component will add anchors to all headings in the rendered HTML.
 If you don't want to render anchors for a particular instance of `x-markdown`, pass `false` to the `anchors` attribute.
 
 ```html
- <x-markdown :anchors="false">
+<x-markdown :anchors="false">
 # My title
 </x-markdown>
 ```
@@ -254,7 +254,7 @@ Under the hood, the `league/commonmark` package is used to render markdown. In t
 If you want to pass options to be used by a particular instance of `x-markdown`, you can pass options to the `options` attribute.
 
 ```html
- <x-markdown :options="['enable_strong' => false]">
+<x-markdown :options="['enable_strong' => false]">
 # My title
 </x-markdown>
 ```
