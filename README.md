@@ -10,7 +10,7 @@ This package contains:
 - a Blade component that can render markdown
 - a highly configurable class that you can use to render markdown
 
-Let's start with an example of the provided `x-markdown` Blade component. This chunk of markdown...
+Let's start with an example of the provided `x-markdown` Blade component. The component can convert this chunk of markdown...
 
 ````blade
 <x-markdown>
@@ -46,7 +46,7 @@ You can also programmatically render HTML.
 app(Spatie\LaravelMarkdown\MarkdownRenderer::class)->toHtml($markdown);
 ```
 
-Out of the box, the `x-markdown` component or `MarkdownRenderer` can:
+Out of the box, the `x-markdown` component and `MarkdownRenderer` can:
 
 - highlight code blocks correctly (via [Shiki PHP](https://github.com/spatie/shiki-php)) for 100+ languages, including PHP, JS, Blade, [and many more](https://github.com/shikijs/shiki/blob/master/docs/languages.md).
 - add anchor links to headings
