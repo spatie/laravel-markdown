@@ -159,13 +159,13 @@ You can use a custom theme using the absolute path to a theme in as the value fo
 
 If you want to change the theme for a particular instance of `x-markdown`, pass a theme to the `theme` attribute.
 
-```html
+````html
  <x-markdown theme="github-dark">
 ```php
 echo 'Hello world';
-     ```
-</x-markdown>
 ```
+</x-markdown>
+````
 
 ### Disabling code highlighting
 
@@ -173,13 +173,13 @@ Code highlighting can be disabled globally, by setting the `code_highlighting.en
 
 If you don't want to use code highlighting for a particular instance of `x-markdown`, pass `false` to the `code-highlighting` attribute.
 
-```html
+````html
  <x-markdown :highlight-code="false">
 ```php
 echo 'Hello world';
-    ```
-</x-markdown>
 ```
+</x-markdown>
+````
 
 ### Rendering anchors
 
@@ -195,13 +195,32 @@ If you don't want to render anchors for a particular instance of `x-markdown`, p
 
 ### Adding custom attributes
 
-TODO
+You can add custom attributes by passing them to `x-markdown`. They will be rendered on the topmost wrapping div.
+
+Here is an example where we add an `extra` attribute.
+
+````html
+<x-markdown extraAttribute="myValue">
+# Title
+</x-markdown>
+````
+
+This will be rendered as:
+
+```html
+<div extra="extraValue">
+    <h1 id="title">Title</h1>
+</div>
+```
 
 ### Caching results
 
 Code highlighting is a resource intensive process. That's why the component ships with caching out of the box. By default, the component uses the default cache store. 
 
 To configure the store to use, or to disable caching, change the value of the `cache_store` param in the `markdown-blade-component` config file.
+
+### Customizing the rendering process
+
 
 
 
