@@ -1,4 +1,4 @@
-# A fully featured Blade component to render markdown and highlight code snippets
+# A highly configurable markdown renderer and Blade component for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-markdown-blade-component.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-markdown-blade-component)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/laravel-markdown-blade-component/run-tests?label=tests)](https://github.com/spatie/laravel-markdown-blade-component/actions?query=workflow%3Arun-tests+branch%3Amain)
