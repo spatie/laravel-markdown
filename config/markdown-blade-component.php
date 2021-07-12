@@ -49,5 +49,25 @@ return [
      *
      * More info: https://github.com/spatie/laravel-markdown-blade-component#customizing-the-rendering-process
      */
-    'renderer_class' => Spatie\MarkdownBladeComponent\MarkdownRenderer::class,
+    'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
+
+    /*
+     * These extensions should be added to the markdown environment. An valid
+     * extension implements League\CommonMark\Extension\ExtensionInterface
+     *
+     * More info: https://commonmark.thephpleague.com/1.6/extensions/overview/
+     */
+    'extensions' => [
+        //
+    ],
+
+    /*
+     * These renderers should be added to the markdown environment. An valid
+     * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/1.6/customization/block-rendering/
+     */
+    'block_renderers' => [
+        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+    ],
 ];

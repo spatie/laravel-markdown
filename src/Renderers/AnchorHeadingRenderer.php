@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent\Renderers;
+namespace Spatie\LaravelMarkdown\Renderers;
 
 use Illuminate\Support\Str;
 use League\CommonMark\Block\Element\AbstractBlock;

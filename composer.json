@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\MarkdownBladeComponent\\": "src"
+            "Spatie\\LaravelMarkdown\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\MarkdownBladeComponent\\Tests\\": "tests"
+            "Spatie\\LaravelMarkdown\\Tests\\": "tests"
         }
     },
     "scripts": {

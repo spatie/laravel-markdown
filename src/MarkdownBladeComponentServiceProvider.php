@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent;
+namespace Spatie\LaravelMarkdown;
 
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
@@ -16,5 +16,25 @@ class MarkdownBladeComponentServiceProvider extends PackageServiceProvider
             ->hasViews();
 
         Blade::component('markdown', MarkdownBladeComponent::class);
+
+        $this->app->bind(MarkdownRenderer::class, function() {
+            $config = config('markdown-blade-component');
+
+            /** @var \Spatie\LaravelMarkdown\MarkdownRenderer $renderer */
+            $renderer  = new $config['renderer_class'](
+                commonmarkOptions: $config['commonmark_options'],
+                highlightCode: $config['code_highlighting']['enabled'],
+                highlightTheme: $config['code_highlighting']['theme'],
+                cacheStoreName: $config['cache_store'],
+                renderAnchors: $config['add_anchors_to_headings'],
+                extensions: $config['extensions']
+            );
+
+            foreach($config['block_renderers'] as $blockRenderer) {
+                $renderer->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
+            }
+
+            return $renderer;
+        });
     }
 }

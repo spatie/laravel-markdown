@@ -1,13 +1,15 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent;
+namespace Spatie\LaravelMarkdown;
 
 use League\CommonMark\Block\Element\Heading;
+use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\ConfigurableEnvironmentInterface;
 use League\CommonMark\Environment;
+use League\CommonMark\Extension\ExtensionInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
-use Spatie\MarkdownBladeComponent\Renderers\AnchorHeadingRenderer;
+use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
 
 class MarkdownRenderer
 {
@@ -17,8 +19,60 @@ class MarkdownRenderer
         protected string $highlightTheme = 'github-light',
         protected string | bool | null $cacheStoreName = null,
         protected bool $renderAnchors = true,
+        protected array $extensions = [],
+        protected array $blockRenderers = [],
     ) {
     }
+
+    public function commonmarkOptions(array $options): self
+    {
+        $this->commonmarkOptions = $options;
+
+        return $this;
+    }
+
+    public function highlightCode(bool $highlightCode = true): self
+    {
+        $this->highlightCode = $highlightCode;
+
+        return $this;
+    }
+
+    public function highlightTheme(string $highlightTheme): self
+    {
+        $this->highlightTheme = $highlightTheme;
+
+        return $this;
+    }
+
+    public function cacheStoreName(string|bool|null $cacheStoreName): self
+    {
+        $this->cacheStoreName = $cacheStoreName;
+
+        return $this;
+    }
+
+    public function renderAnchors(bool $renderAnchors): self
+    {
+        $this->renderAnchors = $renderAnchors;
+
+        return $this;
+    }
+
+    public function addExtension(ExtensionInterface $extension)
+    {
+        $this->extensions[] = $extension;
+
+        return $this;
+    }
+
+    public function addBlockRenderer(string $blockClass, BlockRendererInterface $blockRenderer): self
+    {
+        $this->blockRenderers[] = ['class' => $blockClass, 'renderer' => $blockRenderer];
+
+        return $this;
+    }
+
 
     public function convertToHtml(string $markdown): string
     {
@@ -67,6 +121,14 @@ class MarkdownRenderer
 
         if ($this->renderAnchors) {
             $environment->addBlockRenderer(Heading::class, new AnchorHeadingRenderer());
+        }
+
+        foreach($this->extensions as $extension) {
+            $environment->addExtension($extension);
+        }
+
+        foreach($this->blockRenderers as $blockRenderer) {
+            $environment->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
         }
     }
 }

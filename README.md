@@ -72,7 +72,7 @@ Make sure you have installed Node 10 or higher.
 
 Optionally, You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\MarkdownBladeComponent\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-blade-component-config"
+php artisan vendor:publish --provider="Spatie\LaravelMarkdown\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-blade-component-config"
 ```
 
 This is the contents of the published config file:
@@ -129,7 +129,7 @@ return [
      *
      * More info: https://github.com/spatie/laravel-markdown-blade-component#customizing-the-rendering-process
      */
-    'renderer_class' => Spatie\MarkdownBladeComponent\MarkdownRenderer::class,
+    'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
 ];
 ```
 
@@ -263,12 +263,12 @@ If you want to pass options to be used by a particular instance of `x-markdown`,
 
 The markdown given to the `x-markdown` component will be converted by the class specified in the `renderer_class` value of the `markdown-blade-component` config file.
 
-You can change this value to a class of your own. We highlight recommend that your class extends the default `Spatie\MarkdownBladeComponent\MarkdownRenderer` class. This default class is organised using easy to override methods.
+You can change this value to a class of your own. We highlight recommend that your class extends the default `Spatie\LaravelMarkdown\MarkdownRenderer` class. This default class is organised using easy to override methods.
 
 Here's an example. If you want to customize the environment of the league/commonmark package that is used under the hood, override the `configureCommonMarkEnvironment` method.
 
 ```php
-use League\CommonMark\ConfigurableEnvironmentInterface;use Spatie\MarkdownBladeComponent\MarkdownRenderer;
+use League\CommonMark\ConfigurableEnvironmentInterface;use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class MyCustomRenderer extends MarkdownRenderer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent\Tests;
+namespace Spatie\LaravelMarkdown\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Spatie\Snapshots\MatchesSnapshots;

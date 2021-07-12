@@ -1,9 +1,9 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent\Tests;
+namespace Spatie\LaravelMarkdown\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\MarkdownBladeComponent\MarkdownBladeComponentServiceProvider;
+use Spatie\LaravelMarkdown\MarkdownBladeComponentServiceProvider;
 
 class TestCase extends Orchestra
 {

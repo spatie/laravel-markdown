@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\MarkdownBladeComponent;
+namespace Spatie\LaravelMarkdown;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
