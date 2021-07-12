@@ -15,7 +15,7 @@ class MarkdownBladeComponent extends Component
     ) {
     }
 
-    public function convertToHtml(string $markdown): string
+    public function toHtml(string $markdown): string
     {
         $config = config('markdown');
 

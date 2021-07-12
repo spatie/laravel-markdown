@@ -1,1 +1,1 @@
-<div {{ $attributes }}>{!! $convertToHtml($slot) !!}</div>
+<div {{ $attributes }}>{!! $toHtml($slot) !!}</div>
