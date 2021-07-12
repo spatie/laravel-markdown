@@ -50,9 +50,7 @@ class MarkdownRenderer
     {
         $environment = Environment::createCommonMarkEnvironment();
 
-        $this
-            ->addExtensions($environment)
-            ->addRenderers($environment);
+        $this->configureCommonMarkEnvironment($environment);
 
         $commonMarkConverter = new CommonMarkConverter(
             environment: $environment
@@ -61,21 +59,14 @@ class MarkdownRenderer
         return $commonMarkConverter->convertToHtml($markdown);
     }
 
-    protected function addExtensions(ConfigurableEnvironmentInterface $environment): self
+    protected function configureCommonMarkEnvironment(ConfigurableEnvironmentInterface $environment): void
     {
         if ($this->highlightCode) {
             $environment->addExtension(new HighlightCodeExtension($this->highlightTheme));
         }
 
-        return $this;
-    }
-
-    protected function addRenderers(ConfigurableEnvironmentInterface $environment): self
-    {
         if ($this->renderAnchors) {
             $environment->addBlockRenderer(Heading::class, new AnchorHeadingRenderer());
         }
-
-        return $this;
     }
 }
