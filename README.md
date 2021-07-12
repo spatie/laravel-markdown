@@ -11,7 +11,7 @@ This package contains a Blade component that can render markdown to HTML.
 
 This chunk of markdown...
 
-```blade
+````blade
 <x-markdown>
 # My title
 
@@ -19,9 +19,9 @@ This is a [link to our website](https://spatie.be)
 
 ```php
 echo 'Hello world';
-    ```
-</x-markdown>
 ```
+</x-markdown>
+````
 
 ... will be converted to this chunk of HTML:
 
