@@ -66,9 +66,9 @@ You can find installation instructions and detailed instructions on how to use t
 
 ## Related packages
 
-If you only need the league/commonmark extension to highlight code, head over to [spatie/commonmark-shiki-highlighter](https://github.com/spatie/commonmark-shiki-highlighter)
+If you only need the league/commonmark extension to highlight code, head over to [spatie/commonmark-shiki-highlighter](https://github.com/spatie/commonmark-shiki-highlighter).
 
-In case you don't need the markdown support, but want to highlight code directly, take a look at [spatie/shiki-php](https://github.com/spatie/shiki-php)
+In case you don't need the markdown support, but want to highlight code directly, take a look at [spatie/shiki-php](https://github.com/spatie/shiki-php).
 
 ## Testing
 
