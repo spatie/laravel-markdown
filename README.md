@@ -10,7 +10,7 @@ This package contains:
 - a Blade component that can render markdown
 - a highly configurable class that you can use to render markdown
 
-Let's start with an example of the provided `x-markdown` Blade component. The component can convert this chunk of markdown...
+Let's start with an example of the provided `x-markdown` Blade component. This chunk of markdown...
 
 ````blade
 <x-markdown>
@@ -24,7 +24,7 @@ echo 'Hello world';
 </x-markdown>
 ````
 
-... will be converted to this chunk of HTML:
+... will be converted by to component to this chunk of HTML:
 
 ```html
 <div>
