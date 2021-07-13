@@ -64,6 +64,12 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 You can find installation instructions and detailed instructions on how to use this package at [the dedicated documentation site](https://docs.spatie.be/laravel-markdown/v1/introduction/).
 
+## Related packages
+
+If you only need the league/commonmark extension to highlight code, head over to [spatie/commonmark-shiki-highlighter](https://github.com/spatie/commonmark-shiki-highlighter)
+
+In case you don't need the markdown support, but want to highlight code directly, take a look at [spatie/shiki-php](https://github.com/spatie/shiki-php)
+
 ## Testing
 
 ```bash
