@@ -25,7 +25,7 @@ Make sure you have installed Node 10 or higher.
 
 Optionally, You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\LaravelMarkdown\LaravelMarkdownBladeComponentServiceProvider" --tag="markdown-config"
+php artisan vendor:publish --provider="Spatie\LaravelMarkdown\MarkdownServiceProvider" --tag="markdown-config"
 ```
 
 This is the contents of the published config file:
