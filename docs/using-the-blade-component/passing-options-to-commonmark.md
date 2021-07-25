@@ -8,7 +8,7 @@ Under the hood, the `league/commonmark` package is used to render markdown. In t
 If you want to pass options to be used by a particular instance of `x-markdown`, you can pass options to the `options` attribute.
 
 ```html
-<x-markdown :options="['enable_strong' => false]">
+<x-markdown :options="['commonmark' => ['enable_strong' => false]]">
 # My title
 </x-markdown>
 ```
