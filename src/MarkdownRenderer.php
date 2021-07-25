@@ -23,6 +23,8 @@ class MarkdownRenderer
         protected array $extensions = [],
         protected array $blockRenderers = [],
         protected array $inlineRenders = [],
+        protected bool $allowHTML = false,
+        protected bool $allowUnsafeLinks = false,
     ) {
     }
 
@@ -156,5 +158,12 @@ class MarkdownRenderer
         foreach ($this->inlineRenders as $inlineRenderer) {
             $environment->addInlineRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
+
+        $securityOptions = [
+          'html' => $this->allowHTML ? 'allow' : 'strip',
+          'allow_unsafe_links' => $this->allowUnsafeLinks
+        ];
+
+        $environment.mergeConfig($securityOptions);
     }
 }

@@ -62,6 +62,28 @@ return [
     'commonmark_options' => [],
 
     /*
+     * Allow HTML elements in your markdown to be passed on.
+     * Only enable you either
+     *   - escape your markdown before it enters the component
+     *     (e.g. by using {{}} for the price of incorrect rendering of blockquotes)
+     *   - or do not render any user-supplied markdown
+     *
+     * More info: https://spatie.be/docs/laravel-markdown/v1/security
+     */
+    'allowHTML' => false,
+
+    /*
+     * Allow links to contain Javascript (e.g. [link](javascript:window.alert('hello')))
+     * Only enable you either
+     *   - escape your markdown before it enters the component
+     *     (e.g. by using {{}} for the price of incorrect rendering of blockquotes)
+     *   - or do not render any user-supplied markdown
+     *
+     * More info: https://spatie.be/docs/laravel-markdown/v1/security
+     */
+    'allowUnsafeLinks' => false,
+
+    /*
      * Rendering markdown to HTML can be resource intensive. By default
      * we'll cache the results.
      *
@@ -112,4 +134,3 @@ return [
     ],
 ];
 ```
-

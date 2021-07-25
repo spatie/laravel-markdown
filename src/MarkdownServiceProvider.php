@@ -27,7 +27,9 @@ class MarkdownServiceProvider extends PackageServiceProvider
                 highlightTheme: $config['code_highlighting']['theme'],
                 cacheStoreName: $config['cache_store'],
                 renderAnchors: $config['add_anchors_to_headings'],
-                extensions: $config['extensions']
+                extensions: $config['extensions'],
+                allowHTML: $config['allowHTML'],
+                allowUnsafeLinks: $config['allowUnsafeLinks'],
             );
 
             foreach ($config['block_renderers'] as $blockRenderer) {

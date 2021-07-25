@@ -31,3 +31,9 @@ echo 'Hello world';
 <span class="line"></span></code></pre>
 </div>
 ```
+
+If you are rendering dynamic content, you need to pass it unescaped to the component, or block quote rendering will not work. Do not worry, in the standard configuration, any HTML or unsafe links will be removed.
+
+```blade
+<x-markdown>{!!$unescaped_content!!}</x-markdown>
+```

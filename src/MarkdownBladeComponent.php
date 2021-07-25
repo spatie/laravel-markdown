@@ -12,6 +12,8 @@ class MarkdownBladeComponent extends Component
         protected ?bool $highlightCode = null,
         protected ?string $theme = null,
         protected ?bool $anchors = null,
+        protected ?bool $allowHTML = null,
+        protected ?bool $allowUnsafeLinks = null
     ) {
     }
 
@@ -27,6 +29,8 @@ class MarkdownBladeComponent extends Component
             renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
             blockRenderers: $config['block_renderers'],
             inlineRenders: $config['inline_renderers'],
+            allowHTML: $this->allowHTML ?? config['allowHTML'],
+            allowUnsafeLinks: $this->allowUnsafeLinks ?? config['allowUnsafeLinks'],
         );
 
         return $markdownRenderer->toHtml($markdown);
