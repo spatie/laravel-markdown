@@ -156,5 +156,7 @@ class MarkdownRenderer
         foreach ($this->inlineRenders as $inlineRenderer) {
             $environment->addInlineRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
+        
+        $environment->mergeConfig($this->commonmarkOptions);
     }
 }
