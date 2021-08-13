@@ -125,6 +125,7 @@ class MarkdownRenderer
     protected function convertMarkdownToHtml(string $markdown): string
     {
         $environment = Environment::createCommonMarkEnvironment();
+        $environment->mergeConfig($this->commonmarkOptions);
 
         $this->configureCommonMarkEnvironment($environment);
 
