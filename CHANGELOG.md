@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 1.1.2 - 2021-08-13
+
+- Fix commonmarkOptions not being set in the commonmark environment
+
 ## 1.1.1 - 2021-07-25
 
 - fix various links + docs
