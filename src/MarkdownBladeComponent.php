@@ -25,6 +25,7 @@ class MarkdownBladeComponent extends Component
             highlightTheme: $this->theme ?? $config['code_highlighting']['theme'],
             cacheStoreName: $config['cache_store'],
             renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
+            extensions: $config['extensions'],
             blockRenderers: $config['block_renderers'],
             inlineRenders: $config['inline_renderers'],
         );
