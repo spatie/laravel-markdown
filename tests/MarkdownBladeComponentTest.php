@@ -3,6 +3,7 @@
 namespace Spatie\LaravelMarkdown\Tests;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownBladeComponentTest extends TestCase
@@ -26,6 +27,24 @@ class MarkdownBladeComponentTest extends TestCase
             </x-markdown>
             BLADE
         );
+
+        $this->assertMatchesSnapshot($renderedView);
+    }
+
+    /** @test */
+    public function the_component_can_use_extensions()
+    {
+        config()->set('markdown.extensions', [
+            new GithubFlavoredMarkdownExtension(),
+        ]);
+
+        $markdown = <<<BLADE
+            <x-markdown>
+            ~~Foo~~
+            </x-markdown>
+           BLADE;
+
+        $renderedView = (string)$this->blade($markdown);
 
         $this->assertMatchesSnapshot($renderedView);
     }

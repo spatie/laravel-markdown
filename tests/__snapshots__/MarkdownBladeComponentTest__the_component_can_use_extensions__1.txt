@@ -1,0 +1,2 @@
+<div ><p><del>Foo</del></p>
+</div>

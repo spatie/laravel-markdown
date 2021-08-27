@@ -4,6 +4,7 @@ namespace Spatie\LaravelMarkdown\Tests;
 
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Snapshots\MatchesSnapshots;
+use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 
 class MarkdownRendererTest extends TestCase
 {
@@ -23,6 +24,27 @@ class MarkdownRendererTest extends TestCase
             MD;
 
         $html = $this->markdownRenderer()->toHtml($markdown);
+
+        $this->assertMatchesSnapshot($html);
+    }
+
+
+
+    /** @test */
+    public function it_can_use_extensions()
+    {
+        config()->set('markdown.extensions', [
+            new GithubFlavoredMarkdownExtension(),
+        ]);
+
+        $markdown = <<<MD
+            ~~Foo~~
+           MD;
+
+        $html = $this
+           ->markdownRenderer()
+           ->disableAnchors()
+           ->toHtml($markdown);
 
         $this->assertMatchesSnapshot($html);
     }
