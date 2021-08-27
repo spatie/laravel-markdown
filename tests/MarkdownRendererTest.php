@@ -2,9 +2,9 @@
 
 namespace Spatie\LaravelMarkdown\Tests;
 
+use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Snapshots\MatchesSnapshots;
-use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 
 class MarkdownRendererTest extends TestCase
 {
@@ -27,8 +27,6 @@ class MarkdownRendererTest extends TestCase
 
         $this->assertMatchesSnapshot($html);
     }
-
-
 
     /** @test */
     public function it_can_use_extensions()
