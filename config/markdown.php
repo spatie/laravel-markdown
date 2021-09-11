@@ -54,7 +54,7 @@ return [
      * These extensions should be added to the markdown environment. An valid
      * extension implements League\CommonMark\Extension\ExtensionInterface
      *
-     * More info: https://commonmark.thephpleague.com/1.6/extensions/overview/
+     * More info: https://commonmark.thephpleague.com/2.0/extensions/overview/
      */
     'extensions' => [
         //
@@ -64,7 +64,7 @@ return [
      * These block renderers should be added to the markdown environment. An valid
      * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
      *
-     * More info: https://commonmark.thephpleague.com/1.6/customization/block-rendering/
+     * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'block_renderers' => [
         // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]

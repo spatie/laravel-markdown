@@ -27,7 +27,7 @@ class MarkdownBladeComponent extends Component
             renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
             extensions: $config['extensions'],
             blockRenderers: $config['block_renderers'],
-            inlineRenders: $config['inline_renderers'],
+            inlineRenderers: $config['inline_renderers'],
         );
 
         return $markdownRenderer->toHtml($markdown);

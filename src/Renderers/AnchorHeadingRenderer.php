@@ -3,16 +3,20 @@
 namespace Spatie\LaravelMarkdown\Renderers;
 
 use Illuminate\Support\Str;
-use League\CommonMark\Block\Element\AbstractBlock;
-use League\CommonMark\Block\Renderer\BlockRendererInterface;
-use League\CommonMark\ElementRendererInterface;
-use League\CommonMark\HtmlElement;
+use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
 
-class AnchorHeadingRenderer implements BlockRendererInterface
+class AnchorHeadingRenderer implements NodeRendererInterface
 {
-    public function render(AbstractBlock $block, ElementRendererInterface $htmlRenderer, $inTightList = false)
+    /**
+     * @param Node|Heading $node
+     */
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
-        $element = $this->createElement($block, $htmlRenderer);
+        $element = $this->createElement($node, $childRenderer);
 
         $id = Str::slug($element->getContents());
 
@@ -21,12 +25,16 @@ class AnchorHeadingRenderer implements BlockRendererInterface
         return $element;
     }
 
-    protected function createElement(AbstractBlock $block, ElementRendererInterface $htmlRenderer): HtmlElement
+    /**
+     * @param Node|Heading $node
+     */
+    protected function createElement(Node $node, ChildNodeRendererInterface $childRenderer): HtmlElement
     {
-        $tag = "h{$block->getLevel()}";
+        $tagName = "h{$node->getLevel()}";
 
-        $attrs = $block->getData('attributes', []);
+        $attrs = $node->data->get('attributes', []);
 
-        return new HtmlElement($tag, $attrs, $htmlRenderer->renderInlines($block->children()));
+        return new HtmlElement($tagName, $attrs, $childRenderer->renderNodes($node->children()));
     }
+
 }

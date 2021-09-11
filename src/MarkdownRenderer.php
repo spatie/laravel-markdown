@@ -2,13 +2,13 @@
 
 namespace Spatie\LaravelMarkdown;
 
-use League\CommonMark\Block\Element\Heading;
-use League\CommonMark\Block\Renderer\BlockRendererInterface;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\ConfigurableEnvironmentInterface;
-use League\CommonMark\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
+use League\CommonMark\MarkdownConverter;
+use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Environment\EnvironmentBuilderInterface;
+use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\ExtensionInterface;
-use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
 
@@ -22,7 +22,7 @@ class MarkdownRenderer
         protected bool $renderAnchors = true,
         protected array $extensions = [],
         protected array $blockRenderers = [],
-        protected array $inlineRenders = [],
+        protected array $inlineRenderers = [],
     ) {
     }
 
@@ -82,16 +82,16 @@ class MarkdownRenderer
         return $this;
     }
 
-    public function addBlockRenderer(string $blockClass, BlockRendererInterface $blockRenderer): self
+    public function addBlockRenderer(string $blockClass, NodeRendererInterface $blockRenderer): self
     {
         $this->blockRenderers[] = ['class' => $blockClass, 'renderer' => $blockRenderer];
 
         return $this;
     }
 
-    public function addInlineRenderer(string $inlineClass, InlineRendererInterface $inlineRenderer): self
+    public function addInlineRenderer(string $inlineClass, NodeRendererInterface $inlineRenderer): self
     {
-        $this->inlineRenders[] = ['class' => $inlineClass, 'renderer' => $inlineRenderer];
+        $this->inlineRenderers[] = ['class' => $inlineClass, 'renderer' => $inlineRenderer];
 
         return $this;
     }
@@ -124,26 +124,25 @@ class MarkdownRenderer
 
     protected function convertMarkdownToHtml(string $markdown): string
     {
-        $environment = Environment::createCommonMarkEnvironment();
-        $environment->mergeConfig($this->commonmarkOptions);
-
+        $environment = new Environment($this->commonmarkOptions);
         $this->configureCommonMarkEnvironment($environment);
 
-        $commonMarkConverter = new CommonMarkConverter(
+        $commonMarkConverter = new MarkdownConverter(
             environment: $environment
         );
 
         return $commonMarkConverter->convertToHtml($markdown);
     }
 
-    protected function configureCommonMarkEnvironment(ConfigurableEnvironmentInterface $environment): void
+    protected function configureCommonMarkEnvironment(EnvironmentBuilderInterface $environment): void
     {
+        $environment->addExtension(new CommonMarkCoreExtension());
         if ($this->highlightCode) {
             $environment->addExtension(new HighlightCodeExtension($this->highlightTheme));
         }
 
         if ($this->renderAnchors) {
-            $environment->addBlockRenderer(Heading::class, new AnchorHeadingRenderer());
+            $environment->addRenderer(Heading::class, new AnchorHeadingRenderer());
         }
 
         foreach ($this->extensions as $extension) {
@@ -151,13 +150,11 @@ class MarkdownRenderer
         }
 
         foreach ($this->blockRenderers as $blockRenderer) {
-            $environment->addBlockRenderer($blockRenderer['class'], $blockRenderer['renderer']);
+            $environment->addRenderer($blockRenderer['class'], $blockRenderer['renderer']);
         }
 
-        foreach ($this->inlineRenders as $inlineRenderer) {
-            $environment->addInlineRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
+        foreach ($this->inlineRenderers as $inlineRenderer) {
+            $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
-
-        $environment->mergeConfig($this->commonmarkOptions);
     }
 }
