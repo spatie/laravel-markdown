@@ -51,7 +51,7 @@ return [
     'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
 
     /*
-     * These extensions should be added to the markdown environment. An valid
+     * These extensions should be added to the markdown environment. A valid
      * extension implements League\CommonMark\Extension\ExtensionInterface
      *
      * More info: https://commonmark.thephpleague.com/2.0/extensions/overview/
@@ -61,8 +61,8 @@ return [
     ],
 
     /*
-     * These block renderers should be added to the markdown environment. An valid
-     * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
+     * These block renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
      *
      * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
@@ -71,11 +71,11 @@ return [
     ],
 
     /*
-     * These inline renderers should be added to the markdown environment. An valid
-     * renderer implements League\CommonMark\Block\Renderer\InlineRendererInterface;
- *
- * More info: https://commonmark.thephpleague.com/1.6/customization/inline-rendering/
- */
+     * These inline renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
+     */
     'inline_renderers' => [
         // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
     ],
