@@ -1,0 +1,4 @@
+<h1 id="using-frontmatter-with-laravel-blade">Using FrontMatter with Laravel Blade</h1>
+<p>This is a <a href="https://spatie.be">link to our website</a>.</p>
+<p>The content here would be rendered by markdown first - then you would get the FrontMatter metadata and render it again.
+This time by rendering the template defined in extends, and the HTML content rendered by markdown into the defined section.</p>
