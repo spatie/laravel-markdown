@@ -2,13 +2,13 @@
 
 namespace Spatie\LaravelMarkdown;
 
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
+use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Environment\EnvironmentBuilderInterface;
-use League\CommonMark\Environment\Environment;
-use League\CommonMark\Extension\ExtensionInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
 

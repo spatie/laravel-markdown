@@ -5,8 +5,8 @@ namespace Spatie\LaravelMarkdown\Renderers;
 use Illuminate\Support\Str;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\NodeRendererInterface;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
 use League\CommonMark\Util\HtmlElement;
 
 class AnchorHeadingRenderer implements NodeRendererInterface
@@ -36,5 +36,4 @@ class AnchorHeadingRenderer implements NodeRendererInterface
 
         return new HtmlElement($tagName, $attrs, $childRenderer->renderNodes($node->children()));
     }
-
 }
