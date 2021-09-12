@@ -8,6 +8,7 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\MarkdownConverter;
+use League\CommonMark\Output\RenderedContentInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
@@ -124,12 +125,7 @@ class MarkdownRenderer
 
     protected function convertMarkdownToHtml(string $markdown): string
     {
-        $environment = new Environment($this->commonmarkOptions);
-        $this->configureCommonMarkEnvironment($environment);
-
-        $commonMarkConverter = new MarkdownConverter(
-            environment: $environment
-        );
+        $commonMarkConverter = $this->getMarkdownConverter();
 
         return $commonMarkConverter->convertToHtml($markdown);
     }
@@ -156,5 +152,20 @@ class MarkdownRenderer
         foreach ($this->inlineRenderers as $inlineRenderer) {
             $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
+    }
+
+    private function getMarkdownConverter(): MarkdownConverter
+    {
+        $environment = new Environment($this->commonmarkOptions);
+        $this->configureCommonMarkEnvironment($environment);
+
+        return new MarkdownConverter(
+            environment: $environment
+        );
+    }
+
+    public function convertToHtml(string $markdown): RenderedContentInterface
+    {
+        return $this->getMarkdownConverter()->convertToHtml($markdown);
     }
 }
