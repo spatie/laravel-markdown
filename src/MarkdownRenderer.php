@@ -125,9 +125,7 @@ class MarkdownRenderer
 
     protected function convertMarkdownToHtml(string $markdown): string
     {
-        $commonMarkConverter = $this->getMarkdownConverter();
-
-        return $commonMarkConverter->convertToHtml($markdown);
+        return $this->getMarkdownConverter()->convertToHtml($markdown);
     }
 
     protected function configureCommonMarkEnvironment(EnvironmentBuilderInterface $environment): void
