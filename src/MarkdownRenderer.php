@@ -142,7 +142,10 @@ class MarkdownRenderer
         }
 
         foreach ($this->extensions as $extension) {
-            $environment->addExtension(new $extension());
+            if (is_string($extension) && class_exists($extension)) {
+                $extension = new $extension();
+            }
+            $environment->addExtension($extension);
         }
 
         foreach ($this->blockRenderers as $blockRenderer) {
