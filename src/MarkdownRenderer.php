@@ -8,6 +8,7 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\MarkdownConverter;
+use League\CommonMark\Output\RenderedContentInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\LaravelMarkdown\Renderers\AnchorHeadingRenderer;
@@ -124,14 +125,7 @@ class MarkdownRenderer
 
     protected function convertMarkdownToHtml(string $markdown): string
     {
-        $environment = new Environment($this->commonmarkOptions);
-        $this->configureCommonMarkEnvironment($environment);
-
-        $commonMarkConverter = new MarkdownConverter(
-            environment: $environment
-        );
-
-        return $commonMarkConverter->convertToHtml($markdown);
+        return $this->getMarkdownConverter()->convertToHtml($markdown);
     }
 
     protected function configureCommonMarkEnvironment(EnvironmentBuilderInterface $environment): void
@@ -146,7 +140,10 @@ class MarkdownRenderer
         }
 
         foreach ($this->extensions as $extension) {
-            $environment->addExtension(new $extension());
+            if (is_string($extension) && class_exists($extension)) {
+                $extension = new $extension();
+            }
+            $environment->addExtension($extension);
         }
 
         foreach ($this->blockRenderers as $blockRenderer) {
@@ -156,5 +153,20 @@ class MarkdownRenderer
         foreach ($this->inlineRenderers as $inlineRenderer) {
             $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
         }
+    }
+
+    private function getMarkdownConverter(): MarkdownConverter
+    {
+        $environment = new Environment($this->commonmarkOptions);
+        $this->configureCommonMarkEnvironment($environment);
+
+        return new MarkdownConverter(
+            environment: $environment
+        );
+    }
+
+    public function convertToHtml(string $markdown): RenderedContentInterface
+    {
+        return $this->getMarkdownConverter()->convertToHtml($markdown);
     }
 }
