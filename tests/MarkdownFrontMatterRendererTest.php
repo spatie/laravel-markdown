@@ -18,7 +18,7 @@ class MarkdownFrontMatterRendererTest extends TestCase
             FrontMatterExtension::class,
         ]);
 
-        $markdown     = <<<EOT
+        $markdown = <<<EOT
 ---
 extends: post
 title: My title
@@ -52,7 +52,7 @@ EOT;
         // Add the extension on the fly to ensure addExtension is covered by tests too.
         $markdownRenderer = $this->markdownRenderer()->addExtension(new FrontMatterExtension());
 
-        $markdown     = <<<EOT
+        $markdown = <<<EOT
 ---
 title: Using FrontMatter with Laravel Blade
 description: How to render FrontMatter & Blade with Spatie Markdown
