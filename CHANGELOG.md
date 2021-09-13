@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.0.1 - 2021-09-13
+
+- enable use of RenderedContentInterface and small fix (#18)
+
 ## 2.0.0 - 2021-09-12
 
 - use spatie/commonmark-shiki-highlighter 2.0 (#17)
