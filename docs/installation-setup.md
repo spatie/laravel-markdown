@@ -36,14 +36,14 @@ return [
         /*
          * To highlight code, we'll use Shiki under the hood. Make sure it's installed.
          *
-         * More info: https://github.com/spatie/laravel-markdown#installation
+         * More info: https://spatie.be/docs/laravel-markdown/v1/installation-setup
          */
         'enabled' => true,
 
         /*
          * The name of or path to a Shiki theme
          *
-         * More info: https://github.com/spatie/laravel-markdown#specifying-the-theme-used-for-code-highlighting
+         * More info: https://github.com/shikijs/shiki/blob/master/docs/themes.md
          */
         'theme' => 'github-light',
     ],
@@ -57,7 +57,7 @@ return [
      * These options will be passed to the league/commonmark package which is
      * used under the hood to render markdown.
      *
-     * More info: https://github.com/spatie/laravel-markdown#passing-options-to-commonmark
+     * More info: https://spatie.be/docs/laravel-markdown/v1/using-the-blade-component/passing-options-to-commonmark
      */
     'commonmark_options' => [],
 
@@ -77,38 +77,38 @@ return [
      * You can change this to a class of your own to greatly
      * customize the rendering process
      *
-     * More info: https://github.com/spatie/laravel-markdown#customizing-the-rendering-process
+     * More info: https://spatie.be/docs/laravel-markdown/v1/advanced-usage/customizing-the-rendering-process
      */
     'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
 
     /*
-     * These extensions should be added to the markdown environment. An valid
+     * These extensions should be added to the markdown environment. A valid
      * extension implements League\CommonMark\Extension\ExtensionInterface
      *
-     * More info: https://commonmark.thephpleague.com/1.6/extensions/overview/
+     * More info: https://commonmark.thephpleague.com/2.0/extensions/overview/
      */
     'extensions' => [
         //
     ],
 
     /*
-     * These block renderers should be added to the markdown environment. An valid
-     * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
+     * These block renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
      *
-     * More info: https://commonmark.thephpleague.com/1.6/customization/block-rendering/
+     * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'block_renderers' => [
-        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
 
     /*
-     * These inline renderers should be added to the markdown environment. An valid
-     * renderer implements League\CommonMark\Block\Renderer\InlineRendererInterface;
- *
- * More info: https://commonmark.thephpleague.com/1.6/customization/inline-rendering/
- */
+     * These inline renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
+     */
     'inline_renderers' => [
-        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
 ];
 ```

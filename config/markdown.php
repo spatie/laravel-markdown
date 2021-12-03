@@ -67,7 +67,7 @@ return [
      * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'block_renderers' => [
-        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
 
     /*
@@ -77,6 +77,6 @@ return [
      * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'inline_renderers' => [
-        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
 ];

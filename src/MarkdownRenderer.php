@@ -147,11 +147,11 @@ class MarkdownRenderer
         }
 
         foreach ($this->blockRenderers as $blockRenderer) {
-            $environment->addRenderer($blockRenderer['class'], $blockRenderer['renderer']);
+            $environment->addRenderer($blockRenderer['class'], $blockRenderer['renderer'], $blockRenderer['priority'] ?? 0);
         }
 
         foreach ($this->inlineRenderers as $inlineRenderer) {
-            $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer']);
+            $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer'], $blockRenderer['priority'] ?? 0);
         }
     }
 
