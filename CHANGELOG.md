@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.1.0 - 2021-12-03
+
+## What's Changed
+
+- Corrected some markdown, spelling, and URL mistakes... by @telkins in https://github.com/spatie/laravel-markdown/pull/20
+- Allow priority to be set for Block and Inline Renderers by @SimonJulian in https://github.com/spatie/laravel-markdown/pull/23
+
+## New Contributors
+
+- @telkins made their first contribution in https://github.com/spatie/laravel-markdown/pull/20
+- @SimonJulian made their first contribution in https://github.com/spatie/laravel-markdown/pull/23
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2021-09-13
 
 - enable use of RenderedContentInterface and small fix (#18)
