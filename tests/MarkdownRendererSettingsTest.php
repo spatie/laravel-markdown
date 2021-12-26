@@ -81,6 +81,7 @@ class MarkdownRendererSettingsTest extends TestCase
         $reflectionClass = new \ReflectionClass(MarkdownRenderer::class);
         $reflectionMethod = $reflectionClass->getMethod('getMarkdownConverter');
         $reflectionMethod->setAccessible(true);
+
         return $reflectionMethod->invoke(app(MarkdownRenderer::class));
     }
 }
