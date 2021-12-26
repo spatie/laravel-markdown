@@ -53,6 +53,7 @@ class MarkdownRendererSettingsTest extends TestCase
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
         $refelctionClass = new \ReflectionClass($renderers);
         $reflectionProperty = $refelctionClass->getProperty('list');
+        $reflectionProperty->setAccessible(true);
         $this->assertEquals(25, array_keys($reflectionProperty->getValue($renderers))[0]);
         $this->assertInstanceOf(TextDividerRenderer::class, $reflectionProperty->getValue($renderers)[25][0]);
     }
@@ -67,6 +68,7 @@ class MarkdownRendererSettingsTest extends TestCase
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
         $refelctionClass = new \ReflectionClass($renderers);
         $reflectionProperty = $refelctionClass->getProperty('list');
+        $reflectionProperty->setAccessible(true);
         $this->assertEquals(42, array_keys($reflectionProperty->getValue($renderers))[0]);
         $this->assertInstanceOf(TextDividerRenderer::class, $reflectionProperty->getValue($renderers)[42][0]);
     }
