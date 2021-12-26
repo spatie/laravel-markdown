@@ -61,14 +61,14 @@ class MarkdownRendererSettingsTest extends TestCase
     public function it_can_register_inline_renderers()
     {
         config()->set('markdown.inline_renderers', [
-            ['class' => ThematicBreak::class, 'renderer' => new TextDividerRenderer(), 'priority' => 25],
+            ['class' => ThematicBreak::class, 'renderer' => new TextDividerRenderer(), 'priority' => 42],
         ]);
 
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
         $refelctionClass = new \ReflectionClass($renderers);
         $reflectionProperty = $refelctionClass->getProperty('list');
-        $this->assertEquals(25, array_keys($reflectionProperty->getValue($renderers))[0]);
-        $this->assertInstanceOf(TextDividerRenderer::class, $reflectionProperty->getValue($renderers)[25][0]);
+        $this->assertEquals(42, array_keys($reflectionProperty->getValue($renderers))[0]);
+        $this->assertInstanceOf(TextDividerRenderer::class, $reflectionProperty->getValue($renderers)[42][0]);
     }
 
     protected function markdownRenderer(): MarkdownRenderer
