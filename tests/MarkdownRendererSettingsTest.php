@@ -20,7 +20,7 @@ class MarkdownRendererSettingsTest extends TestCase
         $markdownRenderer = $this->markdownRenderer();
         $initialValue = $this->getProtectedPropertyValue($markdownRenderer, 'highlightCode');
         $this->assertTrue($initialValue);
-        
+
         $markdownRenderer->highlightCode(false);
 
         $this->assertNotEquals($initialValue, $this->getProtectedPropertyValue($markdownRenderer, 'highlightCode'));
@@ -33,9 +33,9 @@ class MarkdownRendererSettingsTest extends TestCase
         $markdownRenderer = $this->markdownRenderer();
         $initialValue = $this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors');
         $this->assertTrue($initialValue);
-        
+
         $markdownRenderer->renderAnchors(false);
-        
+
         $this->assertNotEquals($initialValue, $this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors'));
         $this->assertFalse($this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors'));
     }
@@ -101,7 +101,7 @@ class MarkdownRendererSettingsTest extends TestCase
         if ($markdownRenderer === null) {
             $markdownRenderer = app(MarkdownRenderer::class);
         }
-        
+
         $reflectionClass = new ReflectionClass(MarkdownRenderer::class);
         $reflectionMethod = $reflectionClass->getMethod('getMarkdownConverter');
         $reflectionMethod->setAccessible(true);
@@ -114,7 +114,7 @@ class MarkdownRendererSettingsTest extends TestCase
         $reflectedClass = new ReflectionClass($object);
         $reflectedProperty = $reflectedClass->getProperty($propertyName);
         $reflectedProperty->setAccessible(true);
-        
+
         return $reflectedProperty->getValue($object);
     }
 }
