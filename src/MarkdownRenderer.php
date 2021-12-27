@@ -83,16 +83,16 @@ class MarkdownRenderer
         return $this;
     }
 
-    public function addBlockRenderer(string $blockClass, NodeRendererInterface $blockRenderer): self
+    public function addBlockRenderer(string $blockClass, NodeRendererInterface $blockRenderer, ?int $priority = 0): self
     {
-        $this->blockRenderers[] = ['class' => $blockClass, 'renderer' => $blockRenderer];
+        $this->blockRenderers[] = ['class' => $blockClass, 'renderer' => $blockRenderer, 'priority' => $priority];
 
         return $this;
     }
 
-    public function addInlineRenderer(string $inlineClass, NodeRendererInterface $inlineRenderer): self
+    public function addInlineRenderer(string $inlineClass, NodeRendererInterface $inlineRenderer, ?int $priority = 0): self
     {
-        $this->inlineRenderers[] = ['class' => $inlineClass, 'renderer' => $inlineRenderer];
+        $this->inlineRenderers[] = ['class' => $inlineClass, 'renderer' => $inlineRenderer, 'priority' => $priority];
 
         return $this;
     }
@@ -151,7 +151,7 @@ class MarkdownRenderer
         }
 
         foreach ($this->inlineRenderers as $inlineRenderer) {
-            $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer'], $blockRenderer['priority'] ?? 0);
+            $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer'], $inlineRenderer['priority'] ?? 0);
         }
     }
 
