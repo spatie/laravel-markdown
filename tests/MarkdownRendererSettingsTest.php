@@ -4,6 +4,7 @@ namespace Spatie\LaravelMarkdown\Tests;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\ThematicBreak;
 use League\CommonMark\MarkdownConverter;
+use ReflectionClass;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\LaravelMarkdown\Tests\Stubs\InlineTextDividerRenderer;
 use Spatie\LaravelMarkdown\Tests\Stubs\TextDividerRenderer;
@@ -17,7 +18,7 @@ class MarkdownRendererSettingsTest extends TestCase
     public function it_can_modify_highlight_code_option()
     {
         $markdownRenderer = $this->markdownRenderer();
-        $reflectedClass = new \ReflectionClass($markdownRenderer);
+        $reflectedClass = new ReflectionClass($markdownRenderer);
         $reflectedProperty = $reflectedClass->getProperty('highlightCode');
         $reflectedProperty->setAccessible(true);
         $previousValue = $reflectedProperty->getValue($markdownRenderer);
@@ -31,7 +32,7 @@ class MarkdownRendererSettingsTest extends TestCase
     public function it_can_modify_render_anchors_option()
     {
         $markdownRenderer = $this->markdownRenderer();
-        $reflectedClass = new \ReflectionClass($markdownRenderer);
+        $reflectedClass = new ReflectionClass($markdownRenderer);
         $reflectedProperty = $reflectedClass->getProperty('renderAnchors');
         $reflectedProperty->setAccessible(true);
         $previousValue = $reflectedProperty->getValue($markdownRenderer);
@@ -49,7 +50,7 @@ class MarkdownRendererSettingsTest extends TestCase
         ]);
 
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new \ReflectionClass($renderers);
+        $refelctionClass = new ReflectionClass($renderers);
         $reflectionProperty = $refelctionClass->getProperty('list');
         $reflectionProperty->setAccessible(true);
         $this->assertEquals(25, array_keys($reflectionProperty->getValue($renderers))[0]);
@@ -64,7 +65,7 @@ class MarkdownRendererSettingsTest extends TestCase
         ]);
 
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new \ReflectionClass($renderers);
+        $refelctionClass = new ReflectionClass($renderers);
         $reflectionProperty = $refelctionClass->getProperty('list');
         $reflectionProperty->setAccessible(true);
         $this->assertEquals(42, array_keys($reflectionProperty->getValue($renderers))[0]);
@@ -80,7 +81,7 @@ class MarkdownRendererSettingsTest extends TestCase
 
         $markdownConverter = $this->markdownConverter($markdownRenderer);
         $renderersList = $markdownConverter->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new \ReflectionClass($renderersList);
+        $refelctionClass = new ReflectionClass($renderersList);
         $reflectionProperty = $refelctionClass->getProperty('list');
         $reflectionProperty->setAccessible(true);
         $orderedList = $reflectionProperty->getValue($renderersList);
@@ -100,7 +101,7 @@ class MarkdownRendererSettingsTest extends TestCase
         if ($markdownRenderer === null) {
             $markdownRenderer = app(MarkdownRenderer::class);
         }
-        $reflectionClass = new \ReflectionClass(MarkdownRenderer::class);
+        $reflectionClass = new ReflectionClass(MarkdownRenderer::class);
         $reflectionMethod = $reflectionClass->getMethod('getMarkdownConverter');
         $reflectionMethod->setAccessible(true);
 
