@@ -49,12 +49,15 @@ class MarkdownRendererSettingsTest extends TestCase
             ['class' => ThematicBreak::class, 'renderer' => new TextDividerRenderer(), 'priority' => 25],
         ]);
 
+        // Using the configured Environment get all the Renderers for the ThematicBreak class
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new ReflectionClass($renderers);
-        $reflectionProperty = $refelctionClass->getProperty('list');
-        $reflectionProperty->setAccessible(true);
-        $this->assertEquals(25, array_keys($reflectionProperty->getValue($renderers))[0]);
-        $this->assertInstanceOf(TextDividerRenderer::class, $reflectionProperty->getValue($renderers)[25][0]);
+        // Get the raw list from the priority list...this ensures we preserve the ordered IDs
+        $priorityArray = $this->getProtectedPropertyValue($renderers, 'list');
+        // Verify the items registered via 'markdown.block_renderers' were registered with the proper priority
+        $this->assertEquals(25, array_keys($priorityArray)[0]);
+        $this->assertArrayHasKey(25, $priorityArray);
+        $this->assertArrayHasKey(0, $priorityArray[25]);
+        $this->assertInstanceOf(TextDividerRenderer::class, $priorityArray[25][0]);
     }
 
     /** @test */
@@ -64,31 +67,36 @@ class MarkdownRendererSettingsTest extends TestCase
             ['class' => ThematicBreak::class, 'renderer' => new InlineTextDividerRenderer(), 'priority' => 42],
         ]);
 
+        // Using the configured Environment get all the Renderers for the ThematicBreak class
         $renderers = $this->markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new ReflectionClass($renderers);
-        $reflectionProperty = $refelctionClass->getProperty('list');
-        $reflectionProperty->setAccessible(true);
-        $this->assertEquals(42, array_keys($reflectionProperty->getValue($renderers))[0]);
-        $this->assertInstanceOf(InlineTextDividerRenderer::class, $reflectionProperty->getValue($renderers)[42][0]);
+        // Get the raw list from the priority list...this ensures we preserve the ordered IDs
+        $priorityArray = $this->getProtectedPropertyValue($renderers, 'list');
+        // Verify the items registered via 'markdown.inline_renderers' were registered with the proper priority
+        $this->assertEquals(42, array_keys($priorityArray)[0]);
+        $this->assertArrayHasKey(42, $priorityArray);
+        $this->assertArrayHasKey(0, $priorityArray[42]);
+        $this->assertInstanceOf(InlineTextDividerRenderer::class, $priorityArray[42][0]);
     }
 
     /** @test */
     public function it_can_dynamically_register_renderers()
     {
+        // Prepare a version of markdown renderer to add block/inline renderer via method..
         $markdownRenderer = $this->markdownRenderer();
         $markdownRenderer = $markdownRenderer->addBlockRenderer(ThematicBreak::class, new TextDividerRenderer(), 42);
         $markdownRenderer = $markdownRenderer->addInlineRenderer(ThematicBreak::class, new InlineTextDividerRenderer(), 25);
-
+        // Get the normally protected markdown converter and renderers list
         $markdownConverter = $this->markdownConverter($markdownRenderer);
         $renderersList = $markdownConverter->getEnvironment()->getRenderersForClass(ThematicBreak::class);
-        $refelctionClass = new ReflectionClass($renderersList);
-        $reflectionProperty = $refelctionClass->getProperty('list');
-        $reflectionProperty->setAccessible(true);
-        $orderedList = $reflectionProperty->getValue($renderersList);
-        $this->assertEquals(42, array_keys($orderedList)[0]);
-        $this->assertEquals(25, array_keys($orderedList)[1]);
-        $this->assertInstanceOf(TextDividerRenderer::class, $orderedList[42][0]);
-        $this->assertInstanceOf(InlineTextDividerRenderer::class, $orderedList[25][0]);
+        // Get the raw list from the priority list...this ensures we preserve the ordered IDs
+        $priorityArray = $this->getProtectedPropertyValue($renderersList, 'list');
+        // Verify the items registered via 'markdown.inline_renderers' were registered with the proper priority
+        $this->assertEquals(42, array_keys($priorityArray)[0]);
+        $this->assertArrayHasKey(42, $priorityArray);
+        $this->assertInstanceOf(TextDividerRenderer::class, $priorityArray[42][0]);
+        $this->assertEquals(25, array_keys($priorityArray)[1]);
+        $this->assertArrayHasKey(25, $priorityArray);
+        $this->assertInstanceOf(InlineTextDividerRenderer::class, $priorityArray[25][0]);
     }
 
     protected function markdownRenderer(): MarkdownRenderer
