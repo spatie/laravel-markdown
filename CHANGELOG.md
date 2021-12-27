@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.1.1 - 2021-12-27
+
+## What's Changed
+
+- Add tests to identify and fix bug with renderers priority by @mallardduck in https://github.com/spatie/laravel-markdown/pull/26
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.1.0...2.1.1
+
 ## 2.1.0 - 2021-12-03
 
 ## What's Changed
