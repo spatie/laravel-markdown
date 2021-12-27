@@ -4,11 +4,9 @@ namespace Spatie\LaravelMarkdown\Tests;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\ThematicBreak;
 use League\CommonMark\MarkdownConverter;
-use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Spatie\LaravelMarkdown\Tests\Stubs\InlineTextDividerRenderer;
+use Spatie\LaravelMarkdown\Tests\Stubs\TextDividerRenderer;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class MarkdownRendererSettingsTest extends TestCase
@@ -107,21 +105,5 @@ class MarkdownRendererSettingsTest extends TestCase
         $reflectionMethod->setAccessible(true);
 
         return $reflectionMethod->invoke($markdownRenderer);
-    }
-}
-
-class TextDividerRenderer implements NodeRendererInterface
-{
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
-    {
-        return new HtmlElement('pre', ['class' => 'divider'], '==============================');
-    }
-}
-
-class InlineTextDividerRenderer implements NodeRendererInterface
-{
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
-    {
-        return new HtmlElement('pre', ['class' => 'divider'], '==============================');
     }
 }
