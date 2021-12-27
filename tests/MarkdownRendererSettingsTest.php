@@ -18,28 +18,28 @@ class MarkdownRendererSettingsTest extends TestCase
     public function it_can_modify_highlight_code_option()
     {
         $markdownRenderer = $this->markdownRenderer();
-        $reflectedClass = new ReflectionClass($markdownRenderer);
-        $reflectedProperty = $reflectedClass->getProperty('highlightCode');
-        $reflectedProperty->setAccessible(true);
-        $previousValue = $reflectedProperty->getValue($markdownRenderer);
-        $this->assertTrue($previousValue);
+        // get and verify initial value
+        $initialValue = $this->getProtectedPropertyValue($markdownRenderer, 'highlightCode');
+        $this->assertTrue($initialValue);
+        // Call a method that modifies the value...
         $markdownRenderer->highlightCode(false);
-        $this->assertNotEquals($previousValue, $reflectedProperty->getValue($markdownRenderer));
-        $this->assertFalse(($previousValue = $reflectedProperty->getValue($markdownRenderer)));
+        // Verify the value changed from previous value and is now false
+        $this->assertNotEquals($initialValue, $this->getProtectedPropertyValue($markdownRenderer, 'highlightCode'));
+        $this->assertFalse($this->getProtectedPropertyValue($markdownRenderer, 'highlightCode'));
     }
 
     /** @test */
     public function it_can_modify_render_anchors_option()
     {
         $markdownRenderer = $this->markdownRenderer();
-        $reflectedClass = new ReflectionClass($markdownRenderer);
-        $reflectedProperty = $reflectedClass->getProperty('renderAnchors');
-        $reflectedProperty->setAccessible(true);
-        $previousValue = $reflectedProperty->getValue($markdownRenderer);
-        $this->assertTrue($previousValue);
+        // get and verify initial value
+        $initialValue = $this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors');
+        $this->assertTrue($initialValue);
+        // Call a method that modifies the value...
         $markdownRenderer->renderAnchors(false);
-        $this->assertNotEquals($previousValue, $reflectedProperty->getValue($markdownRenderer));
-        $this->assertFalse(($previousValue = $reflectedProperty->getValue($markdownRenderer)));
+        // Verify the value changed from previous value and is now false
+        $this->assertNotEquals($initialValue, $this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors'));
+        $this->assertFalse($this->getProtectedPropertyValue($markdownRenderer, 'renderAnchors'));
     }
 
     /** @test */
@@ -106,5 +106,13 @@ class MarkdownRendererSettingsTest extends TestCase
         $reflectionMethod->setAccessible(true);
 
         return $reflectionMethod->invoke($markdownRenderer);
+    }
+
+    protected function getProtectedPropertyValue(object $object, string $propertyName)
+    {
+        $reflectedClass = new ReflectionClass($object);
+        $reflectedProperty = $reflectedClass->getProperty($propertyName);
+        $reflectedProperty->setAccessible(true);
+        return $reflectedProperty->getValue($object);
     }
 }
