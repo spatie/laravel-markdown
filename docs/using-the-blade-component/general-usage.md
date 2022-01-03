@@ -31,3 +31,9 @@ echo 'Hello world';
 <span class="line"></span></code></pre>
 </div>
 ```
+
+*Note:* If you're outputting the Markdown through blade, rather than direct input, you will need to use the unescaped blade statement to prevent Laravel's XSS protection stripping the tags:
+
+```blade
+{!! $article->content !!}
+```
