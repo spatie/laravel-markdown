@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.0 - 2022-01-13
+
+## What's Changed
+
+- Add support for Laravel 9
+- Fix broken link in code highlighting documentation by @AshboDev in https://github.com/spatie/laravel-markdown/pull/27
+- Side note for using blade's unescaped statememt by @AshboDev in https://github.com/spatie/laravel-markdown/pull/28
+
+## New Contributors
+
+- @AshboDev made their first contribution in https://github.com/spatie/laravel-markdown/pull/27
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.1.1...2.2.0
+
 ## 2.1.1 - 2021-12-27
 
 ## What's Changed
