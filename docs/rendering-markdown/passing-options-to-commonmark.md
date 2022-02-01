@@ -9,6 +9,6 @@ Alternatively, you can pass options to the `commonmarkOptions()` method.
 
 ```php
 $html = app(Spatie\LaravelMarkdown\MarkdownRenderer::class)
-    ->commonmarkOptions($arryWithOptions)
+    ->commonmarkOptions($arrayWithOptions)
     ->toHtml($markdown);
 ```
