@@ -21,6 +21,7 @@
         "illuminate/contracts": "^8.37|^9.0",
         "illuminate/support": "^8.49|^9.0",
         "illuminate/view": "^8.49|^9.0",
+        "league/commonmark": "^2.2",
         "spatie/commonmark-shiki-highlighter": "^2.0",
         "spatie/laravel-package-tools": "^1.4.3"
     },
