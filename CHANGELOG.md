@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.1 - 2022-02-28
+
+- use `convert` instead of deprecated `convertToHtml`
+
 ## 2.2.0 - 2022-01-13
 
 ## What's Changed
