@@ -7,8 +7,10 @@
 /.gitignore         export-ignore
 /phpunit.xml.dist   export-ignore
 /tests              export-ignore
+/docs               export-ignore
 /.editorconfig      export-ignore
-/.php_cs.dist       export-ignore
+/.php_cs.dist.php   export-ignore
 /psalm.xml          export-ignore
 /psalm.xml.dist     export-ignore
 /testbench.yaml     export-ignore
+/package.json       export-ignore
