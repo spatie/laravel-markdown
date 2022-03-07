@@ -3,6 +3,7 @@
 namespace Spatie\LaravelMarkdown;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\View\Compilers\BladeCompiler;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -15,7 +16,9 @@ class MarkdownServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
 
-        Blade::component('markdown', MarkdownBladeComponent::class);
+        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+            $bladeCompiler->component('markdown', MarkdownBladeComponent::class);
+        });
 
         $this->app->bind(MarkdownRenderer::class, function () {
             $config = config('markdown');
