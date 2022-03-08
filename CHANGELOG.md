@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.2 - 2022-03-08
+
+## What's Changed
+
+- Update .gitattributes by @erikn69 in https://github.com/spatie/laravel-markdown/pull/34
+- Use afterResolving on markdown component register by @erikn69 in https://github.com/spatie/laravel-markdown/pull/35
+
+## New Contributors
+
+- @erikn69 made their first contribution in https://github.com/spatie/laravel-markdown/pull/34
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.1...2.2.2
+
 ## 2.2.1 - 2022-02-28
 
 - use `convert` instead of deprecated `convertToHtml`
