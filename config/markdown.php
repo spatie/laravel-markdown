@@ -79,4 +79,14 @@ return [
     'inline_renderers' => [
         // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
+
+    /*
+     * These inline parsers should be added to the markdown environment. A valid
+     * parser implements League\CommonMark\Renderer\InlineParserInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/2.3/customization/inline-parsing/
+     */
+    'inline_parsers' => [
+        // ['parser' => new MyCustomInlineParser(), 'priority' => 0]
+    ],
 ];
