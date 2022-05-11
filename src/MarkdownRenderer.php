@@ -24,6 +24,7 @@ class MarkdownRenderer
         protected array $extensions = [],
         protected array $blockRenderers = [],
         protected array $inlineRenderers = [],
+        protected array $inlineParsers = [],
     ) {
     }
 
@@ -152,6 +153,10 @@ class MarkdownRenderer
 
         foreach ($this->inlineRenderers as $inlineRenderer) {
             $environment->addRenderer($inlineRenderer['class'], $inlineRenderer['renderer'], $inlineRenderer['priority'] ?? 0);
+        }
+
+        foreach ($this->inlineParsers as $inlineParser) {
+            $environment->addInlineParser($inlineParser['parser'], $inlineParser['priority'] ?? 0);
         }
     }
 
