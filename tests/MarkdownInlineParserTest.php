@@ -2,18 +2,16 @@
 
 namespace Spatie\LaravelMarkdown\Tests;
 
-
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\LaravelMarkdown\Tests\Stubs\CustomInlineParser;
 
 class MarkdownInlineParserTest extends TestCase
 {
-
     /** @test */
     public function it_can_use_custom_inline_parser()
     {
         config()->set('markdown.inline_parsers', [
-            ['parser' => new CustomInlineParser(), 'priority' => 0]
+            ['parser' => new CustomInlineParser(), 'priority' => 0],
         ]);
 
         $markdown = <<<MD
@@ -32,5 +30,4 @@ class MarkdownInlineParserTest extends TestCase
     {
         return app(MarkdownRenderer::class);
     }
-
 }
