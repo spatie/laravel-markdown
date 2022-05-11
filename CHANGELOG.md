@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.3 - 2022-05-11
+
+## What's Changed
+
+- Adding inline parsers by @MortenDHansen in https://github.com/spatie/laravel-markdown/pull/36
+
+## New Contributors
+
+- @MortenDHansen made their first contribution in https://github.com/spatie/laravel-markdown/pull/36
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.2...2.2.3
+
 ## 2.2.2 - 2022-03-08
 
 ## What's Changed
