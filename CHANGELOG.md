@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.4 - 2022-05-21
+
+## What's Changed
+
+- MarkdownBladeComponent missing inline parsers by @MortenDHansen in https://github.com/spatie/laravel-markdown/pull/37
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.3...2.2.4
+
 ## 2.2.3 - 2022-05-11
 
 ## What's Changed
