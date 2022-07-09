@@ -10,11 +10,12 @@ You can change this value to a class of your own. We highlight recommend that yo
 Here's an example. If you want to customize the environment of the league/commonmark package that is used under the hood, override the `configureCommonMarkEnvironment` method.
 
 ```php
-use League\CommonMark\ConfigurableEnvironmentInterface;use Spatie\LaravelMarkdown\MarkdownRenderer;
+use League\CommonMark\Environment\EnvironmentBuilderInterface;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class MyCustomRenderer extends MarkdownRenderer
 {
-    public function configureCommonMarkEnvironment(ConfigurableEnvironmentInterface $environment) : void
+    public function configureCommonMarkEnvironment(EnvironmentBuilderInterface $environment) : void
     {
         parent::configureCommonMarkEnvironment($environment);
         
