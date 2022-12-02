@@ -1,2 +1,0 @@
-<div extraAttribute="extraValue"><h1 id="title">Title</h1>
-</div>

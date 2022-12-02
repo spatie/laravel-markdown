@@ -1,3 +1,0 @@
-<div ><code class="language-php">echo 'Hello world';
-</code>
-</div>
