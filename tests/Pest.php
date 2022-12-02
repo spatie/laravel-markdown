@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\LaravelMarkdown\Tests\TestCase;
 
 /*
@@ -8,7 +10,7 @@ use Spatie\LaravelMarkdown\Tests\TestCase;
 |--------------------------------------------------------------------------
 */
 
-uses(TestCase::class)->in('.');
+uses(TestCase::class, InteractsWithViews::class)->in('.');
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,8 @@ uses(TestCase::class)->in('.');
 | Functions
 |--------------------------------------------------------------------------
 */
+
+function markdownRenderer(): MarkdownRenderer
+{
+    return app(MarkdownRenderer::class);
+}
