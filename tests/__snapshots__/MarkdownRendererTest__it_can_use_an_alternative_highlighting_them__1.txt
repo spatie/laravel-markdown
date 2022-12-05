@@ -1,4 +1,4 @@
 <h1 id="my-title">My title</h1>
 <p>This is a <a href="https://spatie.be">link to our website</a></p>
-<code class="language-php">echo 'Hello world';
-</code>
+<pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #79C0FF">echo</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">&#39;Hello world&#39;</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span></code></pre>
