@@ -54,4 +54,4 @@ jobs:
       - name: Execute tests
         run: |
           npm install
-          vendor/bin/phpunit
+          vendor/bin/pest

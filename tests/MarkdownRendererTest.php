@@ -1,111 +1,83 @@
 <?php
 
-namespace Spatie\LaravelMarkdown\Tests;
-
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
-use Spatie\LaravelMarkdown\MarkdownRenderer;
-use Spatie\Snapshots\MatchesSnapshots;
 
-class MarkdownRendererTest extends TestCase
-{
-    use MatchesSnapshots;
+it('can render markdown', function () {
+    $markdown = <<<MD
+        # My title
 
-    /** @test */
-    public function it_can_render_markdown()
-    {
-        $markdown = <<<MD
-            # My title
+        This is a [link to our website](https://spatie.be)
 
-            This is a [link to our website](https://spatie.be)
+        ```php
+        echo 'Hello world';
+        ```
+        MD;
 
-            ```php
-            echo 'Hello world';
-            ```
-            MD;
+    $html = markdownRenderer()->toHtml($markdown);
 
-        $html = $this->markdownRenderer()->toHtml($markdown);
+    expect($html)->toMatchSnapshot();
+});
 
-        $this->assertMatchesSnapshot($html);
-    }
+it('can use extensions', function () {
+    config()->set('markdown.extensions', [
+        new GithubFlavoredMarkdownExtension(),
+    ]);
 
-    /** @test */
-    public function it_can_use_extensions()
-    {
-        config()->set('markdown.extensions', [
-            new GithubFlavoredMarkdownExtension(),
-        ]);
+    $markdown = <<<MD
+        ~~Foo~~
+       MD;
 
-        $markdown = <<<MD
-            ~~Foo~~
-           MD;
+    $html = markdownRenderer()
+       ->disableAnchors()
+       ->toHtml($markdown);
 
-        $html = $this
-           ->markdownRenderer()
-           ->disableAnchors()
-           ->toHtml($markdown);
+    expect($html)->toMatchSnapshot();
+});
 
-        $this->assertMatchesSnapshot($html);
-    }
+it('can disable highlighting', function () {
+    $markdown = <<<MD
+        # My title
 
-    /** @test */
-    public function it_can_disable_highlighting()
-    {
-        $markdown = <<<MD
-            # My title
+        This is a [link to our website](https://spatie.be)
 
-            This is a [link to our website](https://spatie.be)
+        ```php
+        echo 'Hello world';
+        ```
+        MD;
 
-            ```php
-            echo 'Hello world';
-            ```
-            MD;
+    $html = markdownRenderer()
+        ->disableHighlighting()
+        ->toHtml($markdown);
 
-        $html = $this
-            ->markdownRenderer()
-            ->disableHighlighting()
-            ->toHtml($markdown);
+    expect($html)->toMatchSnapshot();
+});
 
-        $this->assertMatchesSnapshot($html);
-    }
+it('can use an alternative highlighting them', function () {
+    $markdown = <<<MD
+        # My title
 
-    /** @test */
-    public function it_can_use_an_alternative_highlighting_them()
-    {
-        $markdown = <<<MD
-            # My title
+        This is a [link to our website](https://spatie.be)
 
-            This is a [link to our website](https://spatie.be)
+        ```php
+        echo 'Hello world';
+        ```
+        MD;
 
-            ```php
-            echo 'Hello world';
-            ```
-            MD;
+    $html = markdownRenderer()
+        ->highlightTheme('github-dark')
+        ->toHtml($markdown);
 
-        $html = $this
-            ->markdownRenderer()
-            ->highlightTheme('github-dark')
-            ->toHtml($markdown);
+    expect($html)->toMatchSnapshot();
+});
 
-        $this->assertMatchesSnapshot($html);
-    }
+it('can disable rendering anchors', function () {
+    $markdown = <<<MD
+        # My title
+        MD;
 
-    /** @test */
-    public function it_can_disable_rendering_anchors()
-    {
-        $markdown = <<<MD
-            # My title
-            MD;
+    $html = markdownRenderer()
+        ->disableAnchors()
+        ->toHtml($markdown);
 
-        $html = $this
-            ->markdownRenderer()
-            ->disableAnchors()
-            ->toHtml($markdown);
-
-        $this->assertMatchesSnapshot($html);
-    }
-
-    protected function markdownRenderer(): MarkdownRenderer
-    {
-        return app(MarkdownRenderer::class);
-    }
-}
+    expect($html)->toMatchSnapshot();
+});
