@@ -2,6 +2,24 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.5 - 2022-12-29
+
+### What's Changed
+
+- Change package name in Docs by @nessimabadi in https://github.com/spatie/laravel-markdown/pull/38
+- Update class for extending MarkdownRender by @Raimomo in https://github.com/spatie/laravel-markdown/pull/39
+- Refactor tests to pest by @AyoobMH in https://github.com/spatie/laravel-markdown/pull/46
+- Update MarkdownServiceProvider.php by @neomasterr in https://github.com/spatie/laravel-markdown/pull/49
+
+### New Contributors
+
+- @nessimabadi made their first contribution in https://github.com/spatie/laravel-markdown/pull/38
+- @Raimomo made their first contribution in https://github.com/spatie/laravel-markdown/pull/39
+- @AyoobMH made their first contribution in https://github.com/spatie/laravel-markdown/pull/46
+- @neomasterr made their first contribution in https://github.com/spatie/laravel-markdown/pull/49
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.4...2.2.5
+
 ## 2.2.4 - 2022-05-21
 
 ## What's Changed
