@@ -15,7 +15,7 @@ class MarkdownServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
 
-        $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $bladeCompiler) {
             $bladeCompiler->component('markdown', MarkdownBladeComponent::class);
         });
 
