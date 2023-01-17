@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # A highly configurable markdown renderer and Blade component for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-markdown.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-markdown)
