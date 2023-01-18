@@ -12,7 +12,7 @@ return [
         /*
          * The name of or path to a Shiki theme
          *
-         * More info: https://github.com/shikijs/shiki/blob/master/docs/themes.md
+         * More info: https://github.com/shikijs/shiki/blob/main/docs/themes.md
          */
         'theme' => 'github-light',
     ],
