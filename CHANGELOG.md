@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.6 - 2023-01-25
+
+- support L10
+
 ## 2.2.5 - 2022-12-29
 
 ### What's Changed
