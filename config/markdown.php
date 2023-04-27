@@ -67,7 +67,7 @@ return [
      * More info: https://commonmark.thephpleague.com/2.1/customization/rendering/
      */
     'block_renderers' => [
-        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
+        // ['class' => FencedCode::class, 'renderer' => MyCustomCodeRenderer::class, 'priority' => 0]
     ],
 
     /*
@@ -77,7 +77,7 @@ return [
      * More info: https://commonmark.thephpleague.com/2.1/customization/rendering/
      */
     'inline_renderers' => [
-        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
+        // ['class' => FencedCode::class, 'renderer' => MyCustomCodeRenderer::class, 'priority' => 0]
     ],
 
     /*
@@ -87,6 +87,6 @@ return [
      * More info: https://commonmark.thephpleague.com/2.3/customization/inline-parsing/
      */
     'inline_parsers' => [
-        // ['parser' => new MyCustomInlineParser(), 'priority' => 0]
+        // ['parser' => MyCustomInlineParser::class, 'priority' => 0]
     ],
 ];

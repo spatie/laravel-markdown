@@ -64,9 +64,37 @@ it('can register block renderers', function () {
     expect($priorityArray[25][0])->toBeInstanceOf(TextDividerRenderer::class);
 });
 
+it('can register block renderers class', function () {
+    config()->set('markdown.block_renderers', [
+        ['class' => ThematicBreak::class, 'renderer' => TextDividerRenderer::class, 'priority' => 25],
+    ]);
+
+    $renderers = markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
+    $priorityArray = getProtectedPropertyValue($renderers, 'list');
+
+    expect(array_keys($priorityArray)[0])->toEqual(25);
+    expect($priorityArray)->toHaveKey(25);
+    expect($priorityArray[25])->toHaveKey(0);
+    expect($priorityArray[25][0])->toBeInstanceOf(TextDividerRenderer::class);
+});
+
 it('can register inline renderers', function () {
     config()->set('markdown.inline_renderers', [
         ['class' => ThematicBreak::class, 'renderer' => new InlineTextDividerRenderer(), 'priority' => 42],
+    ]);
+
+    $renderers = markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
+    $priorityArray = getProtectedPropertyValue($renderers, 'list');
+
+    expect(array_keys($priorityArray)[0])->toEqual(42);
+    expect($priorityArray)->toHaveKey(42);
+    expect($priorityArray[42])->toHaveKey(0);
+    expect($priorityArray[42][0])->toBeInstanceOf(InlineTextDividerRenderer::class);
+});
+
+it('can register inline renderers class', function () {
+    config()->set('markdown.inline_renderers', [
+        ['class' => ThematicBreak::class, 'renderer' => InlineTextDividerRenderer::class, 'priority' => 42],
     ]);
 
     $renderers = markdownConverter()->getEnvironment()->getRenderersForClass(ThematicBreak::class);
