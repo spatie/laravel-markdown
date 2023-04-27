@@ -17,6 +17,10 @@ class MarkdownServiceProvider extends PackageServiceProvider
 
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $bladeCompiler) {
             $bladeCompiler->component('markdown', MarkdownBladeComponent::class);
+
+            $echoMarkdown = 'echo app()->make(\\' . MarkdownRenderer::class . '::class)->toHtml';
+            $bladeCompiler->directive('markdown', fn ($markdown) => '<?php ' . ($markdown ? "{$echoMarkdown}({$markdown})" : 'ob_start()') . '; ?>');
+            $bladeCompiler->directive('endmarkdown', fn () => "<?php {$echoMarkdown}(ob_get_clean()); ?>");
         });
 
         $this->app->bind(MarkdownRenderer::class, function () {

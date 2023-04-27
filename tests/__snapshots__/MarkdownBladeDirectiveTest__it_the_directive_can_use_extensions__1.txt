@@ -1,0 +1,1 @@
+<p><del>Foo</del></p>
