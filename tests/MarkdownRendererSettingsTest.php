@@ -106,6 +106,32 @@ it('can register inline renderers class', function () {
     expect($priorityArray[42][0])->toBeInstanceOf(InlineTextDividerRenderer::class);
 });
 
+it('can register embed renderers', function () {
+    config()->set('markdown.commonmark_options', [
+        'embed' => ['adapter' => new TextDividerRenderer()],
+        'embeds' => [ new TextDividerRenderer()],
+    ]);
+
+    $config = getProtectedPropertyValue(markdownConverter()->getEnvironment(), 'config');
+    $configArray = getProtectedPropertyValue($config, 'userConfig');
+
+    expect($configArray['embed']['adapter'])->toBeInstanceOf(TextDividerRenderer::class);
+    expect($configArray['embeds'][0])->toBeInstanceOf(TextDividerRenderer::class);
+});
+
+it('can register embed renderers class', function () {
+    config()->set('markdown.commonmark_options', [
+        'embed' => ['adapter' => TextDividerRenderer::class],
+        'embeds' => [TextDividerRenderer::class],
+    ]);
+
+    $config = getProtectedPropertyValue(markdownConverter()->getEnvironment(), 'config');
+    $configArray = getProtectedPropertyValue($config, 'userConfig');
+
+    expect($configArray['embed']['adapter'])->toBeInstanceOf(TextDividerRenderer::class);
+    expect($configArray['embeds'][0])->toBeInstanceOf(TextDividerRenderer::class);
+});
+
 it('can dynamically register renderers', function () {
     $markdownRenderer = markdownRenderer();
     $markdownRenderer = $markdownRenderer->addBlockRenderer(ThematicBreak::class, new TextDividerRenderer(), 42);

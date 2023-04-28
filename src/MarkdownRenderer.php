@@ -168,7 +168,17 @@ class MarkdownRenderer
 
     private function getMarkdownConverter(): MarkdownConverter
     {
-        $environment = new Environment($this->commonmarkOptions);
+        $commonmarkOptions = $this->commonmarkOptions;
+
+        if (isset($commonmarkOptions['embed'])) {
+            $commonmarkOptions['embed']['adapter'] = $this->getClassInstance($commonmarkOptions['embed']['adapter']);
+        }
+
+        foreach ($commonmarkOptions['embeds'] ?? [] as $i => $embed) {
+            $commonmarkOptions['embeds'][$i] = $this->getClassInstance($embed);
+        }
+
+        $environment = new Environment($commonmarkOptions);
         $this->configureCommonMarkEnvironment($environment);
 
         return new MarkdownConverter(
