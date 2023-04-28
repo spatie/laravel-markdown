@@ -129,7 +129,7 @@ class MarkdownRenderer
         return $this->getMarkdownConverter()->convert($markdown);
     }
 
-    private function getClassInstance($class)
+    protected function getClassInstance($class)
     {
         if (is_string($class) && class_exists($class)) {
             $class = new $class();
