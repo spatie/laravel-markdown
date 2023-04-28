@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.2.7 - 2023-04-28
+
+### What's Changed
+
+- Support class names for config serialization by @erikn69 in https://github.com/spatie/laravel-markdown/pull/53
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.6...2.2.7
+
 ## 2.2.6 - 2023-01-25
 
 - support L10
