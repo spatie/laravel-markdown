@@ -98,7 +98,7 @@ return [
      * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'block_renderers' => [
-        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
+        // ['class' => FencedCode::class, 'renderer' => MyCustomCodeRenderer::class, 'priority' => 0]
     ],
 
     /*
@@ -108,7 +108,17 @@ return [
      * More info: https://commonmark.thephpleague.com/2.0/customization/rendering/
      */
     'inline_renderers' => [
-        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
+        // ['class' => FencedCode::class, 'renderer' => MyCustomCodeRenderer::class, 'priority' => 0]
+    ],
+
+    /*
+     * These inline parsers should be added to the markdown environment. A valid
+     * parser implements League\CommonMark\Renderer\InlineParserInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/2.3/customization/inline-parsing/
+     */
+    'inline_parsers' => [
+        // ['parser' => MyCustomInlineParser::class, 'priority' => 0]
     ],
 ];
 ```
