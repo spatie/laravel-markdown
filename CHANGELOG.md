@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.3.0 - 2023-05-03
+
+### What's Changed
+
+- Update commonmark links by @erikn69 in https://github.com/spatie/laravel-markdown/pull/55
+- Fix badges by @erikn69 in https://github.com/spatie/laravel-markdown/pull/57
+- Add blade directive by @erikn69 in https://github.com/spatie/laravel-markdown/pull/56
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.2.7...2.3.0
+
 ## 2.2.7 - 2023-04-28
 
 ### What's Changed
