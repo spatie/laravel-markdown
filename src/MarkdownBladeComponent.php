@@ -12,6 +12,7 @@ class MarkdownBladeComponent extends Component
         protected ?bool $highlightCode = null,
         protected ?string $theme = null,
         protected ?bool $anchors = null,
+        protected ?bool $anchorsLinks = null,
     ) {
     }
 
@@ -25,6 +26,7 @@ class MarkdownBladeComponent extends Component
             highlightTheme: $this->theme ?? $config['code_highlighting']['theme'],
             cacheStoreName: $config['cache_store'],
             renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
+            renderAnchorsAsLinks: $this->anchorsLinks ?? $config['render_anchors_as_links'],
             extensions: $config['extensions'],
             blockRenderers: $config['block_renderers'],
             inlineRenderers: $config['inline_renderers'],
