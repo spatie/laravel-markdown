@@ -25,13 +25,17 @@ class AnchorHeadingRenderer implements NodeRendererInterface
 
         $id = Str::slug($element->getContents());
 
-        $element->setAttribute('id', $id);
+        if (! $this->renderAnchorsAsLinks) {
+            $element->setAttribute('id', $id);
 
-        if ($this->renderAnchorsAsLinks) {
-            $element->setAttribute('href', "#{$id}");
+            return $element;
         }
 
-        return $element;
+        return new HtmlElement(
+            'a',
+            ['href' => "#{$id}"],
+            "<h{$node->getLevel()} id='{$id}'>{$element->getContents()}</h{$node->getLevel()}>"
+        );
     }
 
     /**
@@ -39,9 +43,7 @@ class AnchorHeadingRenderer implements NodeRendererInterface
      */
     protected function createElement(Node $node, ChildNodeRendererInterface $childRenderer): HtmlElement
     {
-        $tagName = $this->renderAnchorsAsLinks
-            ? 'a'
-            : "h{$node->getLevel()}";
+        $tagName = "h{$node->getLevel()}";
 
         $attrs = $node->data->get('attributes', []);
 
