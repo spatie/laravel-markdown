@@ -1,5 +1,5 @@
 <div ><h1 id="my-title">My title</h1>
 <p>This is a <a href="https://spatie.be">link to our website</a></p>
-<code class="language-php">echo 'Hello world';
-</code>
+<pre class="shiki" style="background-color: #ffffff"><code><span class="line"><span style="color: #0550AE">echo</span><span style="color: #24292F"> </span><span style="color: #0A3069">&#39;Hello world&#39;</span><span style="color: #24292F">;</span></span>
+<span class="line"></span></code></pre>
 </div>
