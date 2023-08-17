@@ -21,6 +21,7 @@ class MarkdownRenderer
         protected string $highlightTheme = 'github-light',
         protected string | bool | null $cacheStoreName = null,
         protected bool $renderAnchors = true,
+        protected bool $renderAnchorsAsLinks = false,
         protected array $extensions = [],
         protected array $blockRenderers = [],
         protected array $inlineRenderers = [],
@@ -73,6 +74,20 @@ class MarkdownRenderer
     public function disableAnchors(): self
     {
         $this->renderAnchors = false;
+
+        return $this;
+    }
+
+    public function renderAnchorsAsLinks(bool $renderAnchorsAsLinks): self
+    {
+        $this->renderAnchorsAsLinks = $renderAnchorsAsLinks;
+
+        return $this;
+    }
+
+    public function enableAnchorsAsLinks(): self
+    {
+        $this->renderAnchorsAsLinks = true;
 
         return $this;
     }
@@ -146,7 +161,7 @@ class MarkdownRenderer
         }
 
         if ($this->renderAnchors) {
-            $environment->addRenderer(Heading::class, new AnchorHeadingRenderer());
+            $environment->addRenderer(Heading::class, new AnchorHeadingRenderer($this->renderAnchorsAsLinks));
         }
 
         foreach ($this->extensions as $extension) {

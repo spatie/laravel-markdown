@@ -22,6 +22,11 @@ return [
      */
     'add_anchors_to_headings' => true,
 
+    /**
+     * When enabled, anchors will be rendered as links.
+     */
+    'render_anchors_as_links' => false,
+
     /*
      * These options will be passed to the league/commonmark package which is
      * used under the hood to render markdown.

@@ -98,6 +98,18 @@ it('the highlighting can be disabled in the config file', function () {
     expect($renderedView)->toMatchSnapshot();
 });
 
+it('the component can render anchors as links', function () {
+    $renderedView = (string)$this->blade(
+        <<<BLADE
+        <x-markdown :anchors-links="true">
+        # Title
+        </x-markdown>
+        BLADE
+    );
+
+    expect($renderedView)->toMatchSnapshot();
+});
+
 it('the component can disable rendering anchors', function () {
     $renderedView = (string)$this->blade(
         <<<BLADE

@@ -50,6 +50,17 @@ it('can modify render anchors option', function () {
     expect(getProtectedPropertyValue($markdownRenderer, 'renderAnchors'))->toBeFalse();
 });
 
+it('can modify render anchors as links option', function () {
+    $markdownRenderer = markdownRenderer();
+    $initialValue = getProtectedPropertyValue($markdownRenderer, 'renderAnchorsAsLinks');
+    expect($initialValue)->toBeFalse();
+
+    $markdownRenderer->renderAnchorsAsLinks(true);
+
+    expect(getProtectedPropertyValue($markdownRenderer, 'renderAnchorsAsLinks'))->not->toEqual($initialValue);
+    expect(getProtectedPropertyValue($markdownRenderer, 'renderAnchorsAsLinks'))->toBeTrue();
+});
+
 it('can register block renderers', function () {
     config()->set('markdown.block_renderers', [
         ['class' => ThematicBreak::class, 'renderer' => new TextDividerRenderer(), 'priority' => 25],

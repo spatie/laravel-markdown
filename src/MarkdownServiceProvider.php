@@ -33,6 +33,7 @@ class MarkdownServiceProvider extends PackageServiceProvider
                 highlightTheme: $config['code_highlighting']['theme'],
                 cacheStoreName: $config['cache_store'],
                 renderAnchors: $config['add_anchors_to_headings'],
+                renderAnchorsAsLinks: $config['render_anchors_as_links'],
                 extensions: $config['extensions'],
                 blockRenderers: $config['block_renderers'],
                 inlineRenderers: $config['inline_renderers'],

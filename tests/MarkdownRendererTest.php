@@ -81,3 +81,15 @@ it('can disable rendering anchors', function () {
 
     expect($html)->toMatchSnapshot();
 });
+
+it('can enable rendering anchors as links', function () {
+    $markdown = <<<MD
+        # My title
+        MD;
+
+    $html = markdownRenderer()
+        ->enableAnchorsAsLinks()
+        ->toHtml($markdown);
+
+    expect($html)->toMatchSnapshot();
+});

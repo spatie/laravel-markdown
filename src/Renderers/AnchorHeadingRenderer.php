@@ -11,6 +11,11 @@ use League\CommonMark\Util\HtmlElement;
 
 class AnchorHeadingRenderer implements NodeRendererInterface
 {
+    public function __construct(
+        protected bool $renderAnchorsAsLinks = false,
+    ) {
+    }
+
     /**
      * @param Node|Heading $node
      */
@@ -20,9 +25,17 @@ class AnchorHeadingRenderer implements NodeRendererInterface
 
         $id = Str::slug($element->getContents());
 
-        $element->setAttribute('id', $id);
+        if (! $this->renderAnchorsAsLinks) {
+            $element->setAttribute('id', $id);
 
-        return $element;
+            return $element;
+        }
+
+        return new HtmlElement(
+            'a',
+            ['href' => "#{$id}"],
+            "<h{$node->getLevel()} id='{$id}'>{$element->getContents()}</h{$node->getLevel()}>"
+        );
     }
 
     /**
