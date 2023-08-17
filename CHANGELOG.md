@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.4.0 - 2023-08-17
+
+### What's Changed
+
+- Add ability to render anchors as links by @WendellAdriel in https://github.com/spatie/laravel-markdown/pull/66
+
+### New Contributors
+
+- @WendellAdriel made their first contribution in https://github.com/spatie/laravel-markdown/pull/66
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.3.1...2.4.0
+
 ## 2.3.1 - 2023-05-05
 
 ### What's Changed
