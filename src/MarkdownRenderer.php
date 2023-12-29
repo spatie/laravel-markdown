@@ -203,6 +203,6 @@ class MarkdownRenderer
 
     public function convertToHtml(string $markdown): RenderedContentInterface
     {
-        return $this->getMarkdownConverter()->convertToHtml($markdown);
+        return $this->getMarkdownConverter()->convert($markdown);
     }
 }
