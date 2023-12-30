@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.4.1 - 2023-12-30
+
+### What's Changed
+
+* Update deprecated function 'convertToHtml' to 'convert' function by @yanalshoubaki in https://github.com/spatie/laravel-markdown/pull/69
+
+### New Contributors
+
+* @yanalshoubaki made their first contribution in https://github.com/spatie/laravel-markdown/pull/69
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.4.0...2.4.1
+
 ## 2.4.0 - 2023-08-17
 
 ### What's Changed
