@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.4.2 - 2024-01-11
+
+### What's Changed
+
+* Allow Laravel 11 by @TomasVotruba in https://github.com/spatie/laravel-markdown/pull/71
+
+### New Contributors
+
+* @TomasVotruba made their first contribution in https://github.com/spatie/laravel-markdown/pull/71
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.4.1...2.4.2
+
 ## 2.4.1 - 2023-12-30
 
 ### What's Changed
