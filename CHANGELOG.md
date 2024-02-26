@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.5.0 - 2024-02-26
+
+* Update the `commonmark-shiki-highlighter` dependency to support Shiki 1.
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.4.2...2.5.0
+
 ## 2.4.2 - 2024-01-11
 
 ### What's Changed
