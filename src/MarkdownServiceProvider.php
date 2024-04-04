@@ -38,6 +38,7 @@ class MarkdownServiceProvider extends PackageServiceProvider
                 blockRenderers: $config['block_renderers'],
                 inlineRenderers: $config['inline_renderers'],
                 inlineParsers: $config['inline_parsers'],
+                cacheDuration: $config['cache_duration'],
             );
         });
     }

@@ -72,6 +72,14 @@ return [
     'cache_store' => null,
 
     /*
+     * When cache_store is enabled, this value will be used to determine
+     * how long the cache will be valid. If you set this to `null` the
+     * cache will never expire.
+     *
+     */
+    'cache_duration' => null,
+
+    /*
      * This class will convert markdown to HTML
      *
      * You can change this to a class of your own to greatly
@@ -122,4 +130,3 @@ return [
     ],
 ];
 ```
-

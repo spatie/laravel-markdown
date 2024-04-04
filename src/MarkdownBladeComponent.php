@@ -31,6 +31,7 @@ class MarkdownBladeComponent extends Component
             blockRenderers: $config['block_renderers'],
             inlineRenderers: $config['inline_renderers'],
             inlineParsers: $config['inline_parsers'],
+            cacheDuration: $config['cache_duration'],
         );
 
         return $markdownRenderer->toHtml($markdown);
