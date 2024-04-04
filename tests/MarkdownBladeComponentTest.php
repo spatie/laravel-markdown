@@ -2,6 +2,7 @@
 
 namespace Spatie\LaravelMarkdown\Tests;
 
+use Carbon\Carbon;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 
 it('the component can render markdown', function () {
@@ -139,6 +140,36 @@ it('the component can cache results', function () {
 
     expect(cache()->get($cacheKey))->not->toBeNull();
 });
+
+it('the component will cache results for the specified duration', function () {
+
+    $duration = 60;
+
+    config()->set('markdown.cache_duration', $duration);
+
+    $cacheKey = 'd1cd0dc15c848738f347cb539578252f';
+
+    $markdown = <<<BLADE
+        <x-markdown>
+        ```php
+        echo 'Hello world';
+        ```
+        </x-markdown>
+       BLADE;
+
+    expect(cache()->get($cacheKey))->toBeNull();
+    expect(config('markdown.cache_duration'))->toBe($duration);
+
+    (string)$this->blade($markdown);
+
+    expect(cache()->get($cacheKey))->not->toBeNull();
+
+    Carbon::setTestNow(now()->addSeconds($duration));
+
+    expect(cache()->get($cacheKey))->toBeNull();
+
+});
+
 
 it('caching can be disabled', function () {
     config()->set('markdown.cache_store', false);
