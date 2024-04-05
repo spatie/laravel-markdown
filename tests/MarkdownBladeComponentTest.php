@@ -164,7 +164,7 @@ it('the component will cache results for the specified duration', function () {
 
     expect(cache()->get($cacheKey))->not->toBeNull();
 
-    Carbon::setTestNow(now()->addSeconds($duration));
+    Carbon::setTestNow(now()->addSeconds($duration)->addSecond());
 
     expect(cache()->get($cacheKey))->toBeNull();
 
