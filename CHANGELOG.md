@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.5.1 - 2024-04-12
+
+### What's Changed
+
+* Add cache duration configurability  by @alxndrmlr in https://github.com/spatie/laravel-markdown/pull/76
+
+### New Contributors
+
+* @alxndrmlr made their first contribution in https://github.com/spatie/laravel-markdown/pull/76
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.5.0...2.5.1
+
 ## 2.5.0 - 2024-02-26
 
 * Update the `commonmark-shiki-highlighter` dependency to support Shiki 1.
