@@ -26,6 +26,7 @@ class MarkdownRenderer
         protected array $blockRenderers = [],
         protected array $inlineRenderers = [],
         protected array $inlineParsers = [],
+        protected int | null $cacheDuration = null,
     ) {
     }
 
@@ -60,6 +61,13 @@ class MarkdownRenderer
     public function cacheStoreName(string | bool | null $cacheStoreName): self
     {
         $this->cacheStoreName = $cacheStoreName;
+
+        return $this;
+    }
+
+    public function cacheDuration(int | null $cacheDuration): self
+    {
+        $this->cacheDuration = $cacheDuration;
 
         return $this;
     }
@@ -121,9 +129,15 @@ class MarkdownRenderer
 
         $cacheKey = $this->getCacheKey($markdown);
 
+        if($this->cacheDuration === null) {
+            return cache()->rememberForever($cacheKey, function () use ($markdown) {
+                return $this->convertMarkdownToHtml($markdown);
+            });
+        }
+
         return cache()
             ->store($this->cacheStoreName)
-            ->rememberForever($cacheKey, function () use ($markdown) {
+            ->remember($cacheKey, $this->cacheDuration, function () use ($markdown) {
                 return $this->convertMarkdownToHtml($markdown);
             });
     }
