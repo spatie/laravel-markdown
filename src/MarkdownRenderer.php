@@ -129,10 +129,12 @@ class MarkdownRenderer
 
         $cacheKey = $this->getCacheKey($markdown);
 
-        if($this->cacheDuration === null) {
-            return cache()->rememberForever($cacheKey, function () use ($markdown) {
-                return $this->convertMarkdownToHtml($markdown);
-            });
+        if ($this->cacheDuration === null) {
+            return cache()
+                ->store($this->cacheStoreName)
+                ->rememberForever($cacheKey, function () use ($markdown) {
+                    return $this->convertMarkdownToHtml($markdown);
+                });
         }
 
         return cache()
