@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.5.2 - 2024-04-22
+
+### What's Changed
+
+* Fix breaking change cache duration by @chillbram in https://github.com/spatie/laravel-markdown/pull/77
+
+### New Contributors
+
+* @chillbram made their first contribution in https://github.com/spatie/laravel-markdown/pull/77
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.5.1...2.5.2
+
 ## 2.5.1 - 2024-04-12
 
 ### What's Changed
