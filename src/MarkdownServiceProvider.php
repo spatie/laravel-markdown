@@ -19,8 +19,8 @@ class MarkdownServiceProvider extends PackageServiceProvider
             $bladeCompiler->component('markdown', MarkdownBladeComponent::class);
 
             $echoMarkdown = 'echo app()->make(\\' . MarkdownRenderer::class . '::class)->toHtml';
-            $bladeCompiler->directive('markdown', fn ($markdown) => '<?php ' . ($markdown ? "{$echoMarkdown}({$markdown})" : 'ob_start()') . '; ?>');
-            $bladeCompiler->directive('endmarkdown', fn () => "<?php {$echoMarkdown}(ob_get_clean()); ?>");
+            $bladeCompiler->directive('markdown', fn($markdown) => '<?php ' . ($markdown ? "{$echoMarkdown}({$markdown})" : 'ob_start()') . '; ?>');
+            $bladeCompiler->directive('endmarkdown', fn() => "<?php {$echoMarkdown}(ob_get_clean()); ?>");
         });
 
         $this->app->bind(MarkdownRenderer::class, function () {
@@ -30,7 +30,7 @@ class MarkdownServiceProvider extends PackageServiceProvider
             return new $config['renderer_class'](
                 commonmarkOptions: $config['commonmark_options'],
                 highlightCode: $config['code_highlighting']['enabled'],
-                highlightTheme: $config['code_highlighting']['theme'],
+                highlightTheme: $config['code_highlighting']['theme'] ?? $config['code_highlighting']['themes'],
                 cacheStoreName: $config['cache_store'],
                 renderAnchors: $config['add_anchors_to_headings'],
                 renderAnchorsAsLinks: $config['render_anchors_as_links'],
