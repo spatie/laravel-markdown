@@ -30,7 +30,8 @@ class MarkdownRenderer
         protected array $inlineRenderers = [],
         protected array $inlineParsers = [],
         protected int | null $cacheDuration = null,
-    ) {}
+    ) {
+    }
 
     public function commonmarkOptions(array $options): self
     {

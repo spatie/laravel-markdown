@@ -13,7 +13,8 @@ class MarkdownBladeComponent extends Component
         protected ?string $theme = null,
         protected ?bool $anchors = null,
         protected ?bool $anchorsLinks = null,
-    ) {}
+    ) {
+    }
 
     public function toHtml(string $markdown): string
     {
