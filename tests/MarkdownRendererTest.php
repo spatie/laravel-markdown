@@ -28,8 +28,8 @@ it('can use extensions', function () {
        MD;
 
     $html = markdownRenderer()
-       ->disableAnchors()
-       ->toHtml($markdown);
+        ->disableAnchors()
+        ->toHtml($markdown);
 
     expect($html)->toMatchSnapshot();
 });
@@ -52,7 +52,7 @@ it('can disable highlighting', function () {
     expect($html)->toMatchSnapshot();
 });
 
-it('can use an alternative highlighting them', function () {
+it('can use an alternative highlighting theme', function () {
     $markdown = <<<MD
         # My title
 
@@ -69,6 +69,30 @@ it('can use an alternative highlighting them', function () {
 
     expect($html)->toMatchSnapshot();
 });
+
+it(
+    'can use two highlighting themes',
+    function () {
+        $markdown = <<<MD
+        # My title
+
+        This is a [link to our website](https://spatie.be)
+
+        ```php
+        echo 'Hello world';
+        ```
+        MD;
+
+        $html = markdownRenderer()
+            ->highlightTheme([
+                'dark' => 'github-dark',
+                'light' => 'github-light',
+            ])
+            ->toHtml($markdown);
+
+        expect($html)->toMatchSnapshot();
+    }
+);
 
 it('can disable rendering anchors', function () {
     $markdown = <<<MD

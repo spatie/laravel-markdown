@@ -1,0 +1,4 @@
+<h1 id="my-title">My title</h1>
+<p>This is a <a href="https://spatie.be">link to our website</a></p>
+<pre class="shiki shiki-themes github-dark github-light" style="--shiki-dark-bg:#24292e;background-color:#fff;--shiki-dark:#e1e4e8;color:#24292e;"><code><span class="line"><span style="color:#005CC5;--shiki-dark:#79B8FF">echo</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> </span><span style="color:#032F62;--shiki-dark:#9ECBFF">&#39;Hello world&#39;</span><span style="color:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span></code></pre>

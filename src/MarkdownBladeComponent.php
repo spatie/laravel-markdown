@@ -13,8 +13,7 @@ class MarkdownBladeComponent extends Component
         protected ?string $theme = null,
         protected ?bool $anchors = null,
         protected ?bool $anchorsLinks = null,
-    ) {
-    }
+    ) {}
 
     public function toHtml(string $markdown): string
     {
@@ -23,7 +22,7 @@ class MarkdownBladeComponent extends Component
         $markdownRenderer = new $config['renderer_class'](
             commonmarkOptions: array_merge($config['commonmark_options'], $this->options),
             highlightCode: $this->highlightCode ?? $config['code_highlighting']['enabled'],
-            highlightTheme: $this->theme ?? $config['code_highlighting']['theme'],
+            highlightTheme: $this->theme ?? $config['code_highlighting']['theme'] ?? $config['code_highlighting']['themes'],
             cacheStoreName: $config['cache_store'],
             renderAnchors: $this->anchors ?? $config['add_anchors_to_headings'],
             renderAnchorsAsLinks: $this->anchorsLinks ?? $config['render_anchors_as_links'],
