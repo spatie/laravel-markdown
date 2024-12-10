@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.7.0 - 2024-12-10
+
+### What's Changed
+
+* Fixed a typo by @makkinga in https://github.com/spatie/laravel-markdown/pull/87
+* Upgrade commonmark by @timvandijck in https://github.com/spatie/laravel-markdown/pull/88
+
+### New Contributors
+
+* @makkinga made their first contribution in https://github.com/spatie/laravel-markdown/pull/87
+* @timvandijck made their first contribution in https://github.com/spatie/laravel-markdown/pull/88
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.6.0...2.7.0
+
 ## 2.6.0 - 2024-11-12
 
 ### What's Changed
