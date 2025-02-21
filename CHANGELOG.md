@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.7.1 - 2025-02-21
+
+### What's Changed
+
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-markdown/pull/89
+
+### New Contributors
+
+* @laravel-shift made their first contribution in https://github.com/spatie/laravel-markdown/pull/89
+
+**Full Changelog**: https://github.com/spatie/laravel-markdown/compare/2.7.0...2.7.1
+
 ## 2.7.0 - 2024-12-10
 
 ### What's Changed
