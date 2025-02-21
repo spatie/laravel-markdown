@@ -26,8 +26,10 @@ jobs:
             testbench: ^8.0
           - laravel: 9.*
             testbench: ^7.0
-          - laravel: 12.*
+          - laravel: 11.*
             testbench: ^10.0
+          - laravel: 12.*
+            testbench: ^11.0
         exclude:
           - laravel: 12.*
             php: 8.1
@@ -36,10 +38,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
 
@@ -50,14 +52,9 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
           coverage: none
 
-      - name: Setup problem matchers
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --no-scripts
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
