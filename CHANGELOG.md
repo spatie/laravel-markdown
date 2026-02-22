@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-markdown` will be documented in this file.
 
+## 2.8.0 - 2026-02-22
+
+Add Laravel 13.x support
+
 ## 2.7.1 - 2025-02-21
 
 ### What's Changed
