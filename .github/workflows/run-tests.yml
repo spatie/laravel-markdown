@@ -9,27 +9,27 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.4, 8.3, 8.2]
-        laravel: ['10.*', '11.*', '12.*']
+        php: [8.5, 8.4, 8.3, 8.2]
+        laravel: ['11.*', '12.*', '13.*']
         stability: [prefer-stable]
         include:
-          - laravel: 10.*
-            testbench: ^8.0
           - laravel: 11.*
             testbench: ^9.0
           - laravel: 12.*
             testbench: ^10.0
+          - laravel: 13.*
+            testbench: ^11.0
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
