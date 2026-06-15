@@ -1,5 +1,6 @@
 <?php
 
+use League\CommonMark\Extension\Footnote\FootnoteExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 
 it('can render markdown', function () {
@@ -32,6 +33,27 @@ it('can use extensions', function () {
         ->toHtml($markdown);
 
     expect($html)->toMatchSnapshot();
+});
+
+it('can render footnotes using the footnote extension', function () {
+    config()->set('markdown.extensions', [
+        new FootnoteExtension(),
+    ]);
+
+    $markdown = <<<MD
+        Here is a footnote reference.[^1]
+
+        [^1]: Here is the footnote.
+        MD;
+
+    $html = markdownRenderer()
+        ->disableAnchors()
+        ->toHtml($markdown);
+
+    expect($html)
+        ->toContain('class="footnote-ref"')
+        ->toContain('id="fn:1"')
+        ->toContain('Here is the footnote.');
 });
 
 it('can disable highlighting', function () {
