@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.4, 8.3, 8.2]
+        php: ['8.6', '8.5', '8.4', '8.3', '8.2']
         laravel: ['10.*', '11.*', '12.*', '13.*']
         stability: [prefer-stable]
         include:
@@ -24,7 +24,7 @@ jobs:
             testbench: ^11.0
         exclude:
           - laravel: 13.*
-            php: 8.2
+            php: '8.2'
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -52,4 +52,4 @@ jobs:
       - name: Execute tests
         run: |
           npm install
-          vendor/bin/pest
+          vendor/bin/pest --no-coverage --fail-on-incomplete
