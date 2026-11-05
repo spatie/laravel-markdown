@@ -19,7 +19,7 @@ it('the directive can render markdown', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the directive can render markdown with argument', function () {
@@ -29,7 +29,7 @@ it('the directive can render markdown with argument', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the directive can use extensions', function () {
@@ -45,7 +45,7 @@ it('the directive can use extensions', function () {
 
     $renderedView = (string)$this->blade($markdown);
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the default theme can be set in the config file', function () {
@@ -61,7 +61,7 @@ it('the default theme can be set in the config file', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the directive can cache results', function () {

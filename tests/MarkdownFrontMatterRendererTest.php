@@ -31,7 +31,7 @@ EOT;
         'title' => 'My title',
     ])->toEqual($frontMatter);
     $html = $renderedMarkdown->getContent();
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it('can parse many front matter variables', function () {
@@ -67,5 +67,5 @@ EOT;
         'food' => 'Pizza',
     ])->toEqual($frontMatter);
     $html = $renderedMarkdown->getContent();
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });

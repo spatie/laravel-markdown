@@ -16,7 +16,7 @@ it('can render markdown', function () {
 
     $html = markdownRenderer()->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it('can use extensions', function () {
@@ -32,7 +32,7 @@ it('can use extensions', function () {
         ->disableAnchors()
         ->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it('can render footnotes using the footnote extension', function () {
@@ -71,7 +71,7 @@ it('can disable highlighting', function () {
         ->disableHighlighting()
         ->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it('can use an alternative highlighting theme', function () {
@@ -89,7 +89,7 @@ it('can use an alternative highlighting theme', function () {
         ->highlightTheme('github-dark')
         ->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it(
@@ -112,7 +112,7 @@ it(
             ])
             ->toHtml($markdown);
 
-        expect($html)->toMatchSnapshot();
+        expect($html)->toMatchTextSnapshot();
     }
 );
 
@@ -125,7 +125,7 @@ it('can disable rendering anchors', function () {
         ->disableAnchors()
         ->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });
 
 it('can enable rendering anchors as links', function () {
@@ -137,5 +137,5 @@ it('can enable rendering anchors as links', function () {
         ->enableAnchorsAsLinks()
         ->toHtml($markdown);
 
-    expect($html)->toMatchSnapshot();
+    expect($html)->toMatchTextSnapshot();
 });

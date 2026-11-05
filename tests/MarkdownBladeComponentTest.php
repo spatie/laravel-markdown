@@ -20,7 +20,7 @@ it('the component can render markdown', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can use extensions', function () {
@@ -36,7 +36,7 @@ it('the component can use extensions', function () {
 
     $renderedView = (string)$this->blade($markdown);
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can use a custom theme', function () {
@@ -50,7 +50,7 @@ it('the component can use a custom theme', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the default theme can be set in the config file', function () {
@@ -66,7 +66,7 @@ it('the default theme can be set in the config file', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can disable highlighting code', function () {
@@ -82,7 +82,7 @@ it('the component can disable highlighting code', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the highlighting can be disabled in the config file', function () {
@@ -96,7 +96,7 @@ it('the highlighting can be disabled in the config file', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can render anchors as links', function () {
@@ -108,7 +108,7 @@ it('the component can render anchors as links', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can disable rendering anchors', function () {
@@ -120,7 +120,7 @@ it('the component can disable rendering anchors', function () {
         BLADE
     );
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
 
 it('the component can cache results', function () {
@@ -200,5 +200,5 @@ it('attributes will be added to the wrapper div', function () {
 
     $renderedView = (string)$this->blade($markdown);
 
-    expect($renderedView)->toMatchSnapshot();
+    expect($renderedView)->toMatchTextSnapshot();
 });
